@@ -1,12 +1,26 @@
+'use client';
+
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
 import {
     ChevronDownIcon,
+    HomeIcon,
+    LinkIcon,
     PencilIcon,
     Square2StackIcon,
 } from '@heroicons/react/16/solid';
+import { Fragment } from 'react';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
+
+const links = [
+    { name: 'Prosjekt 1', href: '/dashboard', icon: HomeIcon },
+    { name: 'Prosjekt 2', href: '/dashboard', icon: HomeIcon },
+    { name: 'Prosjekt 3', href: '/dashboard', icon: HomeIcon },
+];
 
 export default function Dropdown() {
+    const pathname = usePathname();
     return (
         <div className="text-left">
             <Menu>
@@ -16,27 +30,24 @@ export default function Dropdown() {
                 </MenuButton>
 
                 <MenuItems
-                    anchor="bottom"
-                    className="w-52 origin-top-right rounded-xl border border-white bg-white p-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                    anchor="bottom start"
+                    className="w-52 origin-top-right rounded-xl border border-white bg-sky-100 p-1 mt-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
                 >
-                    <MenuItem>
-                        <Link
-                            href="/dashboard"
-                            className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-black/10"
-                        >
-                            <PencilIcon className="size-4 fill-black" />
-                            Edit
-                        </Link>
-                    </MenuItem>
-                    <MenuItem>
-                        <Link
-                            href="/dashboard"
-                            className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-black/10"
-                        >
-                            <Square2StackIcon className="size-4 fill-black" />
-                            Duplicate
-                        </Link>
-                    </MenuItem>
+                    <>
+                        {links.map(link => {
+                            return (
+                                <MenuItem key={link.href} as={Fragment}>
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-gray-50"
+                                    >
+                                        <p>{link.name}</p>
+                                    </Link>
+                                </MenuItem>
+                            );
+                        })}
+                    </>
                 </MenuItems>
             </Menu>
         </div>

@@ -15,6 +15,7 @@ import clsx from 'clsx';
 const links = [
     { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
     { name: 'Inventory', href: '/inventory', icon: TruckIcon },
+    { name: 'Requests', href: '/request', icon: TruckIcon },
 ];
 
 export default function NavLinks() {

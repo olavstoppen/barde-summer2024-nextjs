@@ -10,7 +10,6 @@ import {
     Square2StackIcon,
 } from '@heroicons/react/16/solid';
 import { Fragment } from 'react';
-import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
 const links = [
@@ -24,14 +23,14 @@ export default function Dropdown() {
     return (
         <div className="text-left">
             <Menu>
-                <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1">
+                <MenuButton className="w-300 inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1">
                     Velg prosjekt
                     <ChevronDownIcon className="size-4 fill-white/60" />
                 </MenuButton>
 
                 <MenuItems
                     anchor="bottom start"
-                    className="w-52 origin-top-right rounded-xl border border-white bg-sky-100 p-1 mt-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                    className="w-100 origin-top-right rounded-xl border border-white bg-sky-100 p-1 mt-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
                 >
                     <>
                         {links.map(link => {

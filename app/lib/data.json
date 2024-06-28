@@ -1,0 +1,77 @@
+{
+    "task": [
+        {
+            "id": 1,
+            "name": "Task 1",
+            "type": 0,
+            "status": 0,
+            "description": "Yearly check",
+            "historic_data": ["Yearly check"],
+            "date": "2022-03-17"
+        },
+        {
+            "id": 2,
+            "name": "Task 2",
+            "type": 0,
+            "status": 2,
+            "description": "Yearly check",
+            "historic_data": ["Yearly check"],
+            "date": "2022-01-17"
+        },
+        {
+            "id": 3,
+            "name": "Task 3",
+            "type": 0,
+            "status": 3,
+            "description": "Yearly check",
+            "historic_data": ["Yearly check"],
+            "date": "2022-11-17"
+        }
+    ],
+    "machine": [
+        {
+            "id": 1,
+            "name": "machine 1",
+            "type": 0,
+            "status": 3,
+            "historic_data": ["Yearly check machine 1"],
+            "last_yearly_check": "2022-11-07"
+        },
+        {
+            "id": 2,
+            "name": "machine 2",
+            "type": 2,
+            "status": 3,
+            "historic_data": ["Yearly check machine 2"],
+            "last_yearly_chec": "2022-05-31"
+        },
+        {
+            "id": 3,
+            "name": "machine 3",
+            "type": 3,
+            "status": 3,
+            "historic_data": ["Yearly check machine 3"],
+            "last_yearly_chec": "2022-01-17"
+        }
+    ],
+    "project": [
+        {
+            "id": 1,
+            "name": "project 1",
+            "type": 0,
+            "historic_data": ["start project 1"]
+        },
+        {
+            "id": 2,
+            "name": "project 2",
+            "status": 2,
+            "historic_data": ["start project 2"]
+        },
+        {
+            "id": 3,
+            "name": "project 3",
+            "status": 3,
+            "historic_data": ["start project 3"]
+        }
+    ]
+}

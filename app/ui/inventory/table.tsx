@@ -1,6 +1,7 @@
 import { PlusIcon } from '@heroicons/react/16/solid';
 import Image from 'next/image';
 import Link from 'next/link';
+import { promises as fs } from 'fs';
 
 const machines = [
     { id: 1, name: 'Maskin 1', tyngde: '10kg' },
@@ -19,6 +20,13 @@ export default async function InventoryTable({
     query: string;
     currentPage: number;
 }) {
+    const file = await fs.readFile(
+        process.cwd() + '/app/lib/data.json',
+        'utf8',
+    );
+    const data = JSON.parse(file);
+    console.log(data.machine[0].name);
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">

@@ -1,5 +1,5 @@
 import Pagination from '@/app/ui/inventory/pagination';
-import Table from '@/app/ui/inventory/table';
+import Table from '@/app/ui/tasks/table';
 import { Suspense } from 'react';
 
 export default async function Page({
@@ -15,7 +15,7 @@ export default async function Page({
     const totalPages = 3;
 
     return (
-        <div className="w-full">
+        <div className="max-w-7xl">
             <div className="flex w-full items-center justify-between">
                 <h1 className={`text-2xl`}>Tasks</h1>
             </div>

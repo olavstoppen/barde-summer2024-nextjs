@@ -1,5 +1,4 @@
 import SideNav from '@/app/ui/components/sidenav';
-
 export const experimental_ppr = true;
 
 export default function Home({ children }: { children: React.ReactNode }) {

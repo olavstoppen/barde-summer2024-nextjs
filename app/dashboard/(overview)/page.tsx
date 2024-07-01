@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import CardWrapper from '@/app/ui/dashboard/cards';
-import Dropdown from '@/app/ui/components/dropdown';
+import Dropdown from '@/app/ui/dashboard/dropdown';
 
 export default async function Page() {
     return (

@@ -2,13 +2,7 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import Link from 'next/link';
-import {
-    ChevronDownIcon,
-    HomeIcon,
-    LinkIcon,
-    PencilIcon,
-    Square2StackIcon,
-} from '@heroicons/react/16/solid';
+import { ChevronDownIcon, HomeIcon } from '@heroicons/react/16/solid';
 import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 

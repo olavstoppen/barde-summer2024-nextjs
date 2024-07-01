@@ -6,6 +6,8 @@ export type task = {
     description: string; //En mer detaljert beskrivelse av det som skal behandles
     historic_data: string[]; //Beskriver alt som har skjedd med oppgaven
     date: string;
+    start_date: string;
+    due_date: string;
 };
 export type machine = {
     id: number; //Et unikt nummer som brukes for å identifisere den spesifikke maskinen

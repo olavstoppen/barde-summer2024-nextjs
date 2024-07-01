@@ -1,4 +1,4 @@
-import Pagination from '@/app/ui/inventory/pagination';
+import Pagination from '@/app/ui/components/pagination';
 import Table from '@/app/ui/tasks/table';
 import { Suspense } from 'react';
 

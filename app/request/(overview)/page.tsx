@@ -3,28 +3,24 @@
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Field, Label, Switch } from '@headlessui/react';
-import Dropdown from '@/app/ui/dropdown';
+import Dropdown from '@/app/ui/components/dropdown';
 
 export default function Page() {
     return (
-        <div className="w-full">
+        <div className="max-w-7xl">
             <div
                 className="inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl"
                 aria-hidden="true"
             ></div>
-            <div className="mx-auto max-w-2xl">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <div className="max-w-2xl">
+                <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Meld behov
-                </h2>
+                </h3>
                 <p className="mt-2 text-lg leading-8 text-gray-600">
                     Meld inn behov
                 </p>
             </div>
-            <form
-                action="#"
-                method="POST"
-                className="mx-auto mt-16 max-w-xl sm:mt-20"
-            >
+            <form action="#" method="POST" className="mt-12 max-w-xl">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     <div>
                         <label

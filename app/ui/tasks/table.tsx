@@ -30,55 +30,58 @@ export default async function InventoryTable({
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        {filteredTasks?.map((task: task) => (
-                            <div
-                                key={task.id}
-                                className="mb-2 w-full rounded-md bg-white p-4"
-                            >
-                                <div className="flex items-center justify-between border-b pb-4">
-                                    <div>
-                                        <div className="mb-2 flex items-center">
-                                            <p>{task.due_date}</p>
+                        {tasks?.map(
+                            (tasks: task) =>
+                                tasks.name.toString().includes(query) && (
+                                    <div
+                                        key={tasks.id}
+                                        className="mb-2 w-full rounded-md bg-white p-4"
+                                    >
+                                        <div className="flex items-center justify-between border-b pb-4">
+                                            <div>
+                                                <div className="mb-2 flex items-center">
+                                                    <p>{tasks.due_date}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-between border-b pb-4">
+                                            <div>
+                                                <div className="mb-2 flex items-center">
+                                                    <p>{tasks.id}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="flex w-full items-center justify-between pt-4">
+                                            <div>
+                                                <p className="text-xl font-medium">
+                                                    {tasks.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex w-full items-center justify-between pt-4">
+                                            <div>
+                                                <p className="text-xl font-medium">
+                                                    {tasks.type}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex w-full items-center justify-between pt-4">
+                                            <div>
+                                                <p className="text-xl font-medium">
+                                                    {tasks.status}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="flex w-full items-center justify-between pt-4">
+                                            <div>
+                                                <p className="text-xl font-medium">
+                                                    {tasks.date}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="flex items-center justify-between border-b pb-4">
-                                    <div>
-                                        <div className="mb-2 flex items-center">
-                                            <p>{task.id}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {task.name}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {task.type}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {task.status}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex w-full items-center justify-between pt-4">
-                                    <div>
-                                        <p className="text-xl font-medium">
-                                            {task.date}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                ),
+                        )}
                     </div>
                     <table className="hidden min-w-full text-gray-900 md:table">
                         <thead className="rounded-lg text-left text-sm font-normal">
@@ -116,45 +119,48 @@ export default async function InventoryTable({
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            {filteredTasks.map((task: task) => (
-                                <tr
-                                    key={task.id}
-                                    className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
-                                >
-                                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                        <div className="flex items-center gap-3">
-                                            <p>{task.due_date}</p>
-                                        </div>
-                                    </td>
-                                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                        <div className="flex items-center gap-3">
-                                            <p>{task.id}</p>
-                                        </div>
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        {task.name}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        {task.type}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        {task.status}
-                                    </td>
-                                    <td className="whitespace-nowrap px-3 py-3">
-                                        <div className="flex justify-end gap-3">
-                                            <Link
-                                                href={`/tasks/${task.id}`}
-                                                className="flex h-10 items-center rounded-lg px-4 text-sm font-medium transition-colors hover:bg-grey-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grey-600"
-                                            >
-                                                <ArrowRightIcon className="h-5 md:ml-4" />
-                                                <span className="hidden md:block ml-3">
-                                                    Se info
-                                                </span>
-                                            </Link>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                            {tasks.map(
+                                (tasks: task) =>
+                                    tasks.name.includes(query) && (
+                                        <tr
+                                            key={tasks.id}
+                                            className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                                        >
+                                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                                                <div className="flex items-center gap-3">
+                                                    <p>{tasks.due_date}</p>
+                                                </div>
+                                            </td>
+                                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                                                <div className="flex items-center gap-3">
+                                                    <p>{tasks.id}</p>
+                                                </div>
+                                            </td>
+                                            <td className="whitespace-nowrap px-3 py-3">
+                                                {tasks.name}
+                                            </td>
+                                            <td className="whitespace-nowrap px-3 py-3">
+                                                {tasks.type}
+                                            </td>
+                                            <td className="whitespace-nowrap px-3 py-3">
+                                                {tasks.status}
+                                            </td>
+                                            <td className="whitespace-nowrap px-3 py-3">
+                                                <div className="flex justify-end gap-3">
+                                                    <Link
+                                                        href={`/tasks/${tasks.id}`}
+                                                        className="flex h-10 items-center rounded-lg px-4 text-sm font-medium transition-colors hover:bg-grey-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-grey-600"
+                                                    >
+                                                        <ArrowRightIcon className="h-5 md:ml-4" />
+                                                        <span className="hidden md:block ml-3">
+                                                            Se info
+                                                        </span>
+                                                    </Link>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ),
+                            )}
                         </tbody>
                     </table>
                 </div>

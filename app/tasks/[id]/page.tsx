@@ -29,7 +29,10 @@ export default async function Page({ params }: { params: { id: number } }) {
             <div className="max-w-7xl">
                 <div className="px-4 sm:px-0">
                     <h3 className="text-base font-semibold leading-7 text-gray-900">
-                        Task Information
+                        Vedlikeholdsoppgave
+                    </h3>
+                    <h3 className="text-base font-semibold leading-7 text-gray-900">
+                        {tasks[id - 1].name}
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
                         Informatin about the given task.

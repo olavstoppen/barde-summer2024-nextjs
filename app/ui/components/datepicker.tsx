@@ -12,13 +12,10 @@ export default function DatePickerValue() {
         dayjs('2024-04-17'),
     );
 
-    function handleSearch(term: Dayjs | null) {
-        console.log(dateParams);
-    }
-
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
+                slotProps={{ textField: { size: 'small' } }}
                 value={dateParams}
                 onChange={newValue => setValue(newValue)}
             />

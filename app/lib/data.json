@@ -2,7 +2,21 @@
     "task": [
         {
             "id": 1,
-            "name": "Task 1",
+            "name": "Task 100",
+            "type": 0,
+            "status": 0,
+            "description": "Yearly check",
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 1,
+            "name": "Task 1000",
             "type": 0,
             "status": 0,
             "description": "Yearly check",

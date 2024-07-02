@@ -10,34 +10,33 @@ export default async function Page({
     searchParams,
     dateParams,
 }: {
-    searchParams?: string;
+    searchParams?: {
+        query?: string;
+        page?: string;
+    };
     dateParams?: Dayjs | null;
 }) {
-    const search = searchParams || '';
+    const search = searchParams?.query || '';
     const currentPage = 1;
     const totalPages = 5;
     const date = dateParams;
 
+    console.log(search);
+
     return (
         <div>
             <div className="max-w-7xl">
-                <div className="flex h-full w-full items-center justify-between">
-                    <h1 className={`text-2xl`}>
-                        Her er alle dine tidligere vedlikeholdsoppgaver
-                    </h1>
-                </div>
-                <div className="grid grid-cols-4 mt-6 gap-2">
-                    <div className="max-w-48 mt-4">
+                <h1 className={`text-2xl max-w-72`}>
+                    Her er alle dine tidligere vedlikeholdsoppgaver
+                </h1>
+                <div className="flex items-center justify-between gap-2 pt-5">
+                    <div className="size-auto mt-4 flex items-center justify-between gap-2">
                         <Search placeholder="Search ..." />
-                    </div>
-                    <div className="max-w-64 mt-4">
-                        <DatePickerValue />
-                    </div>
-                    <div className="max-w-64 mt-4">
-                        <DatePickerValue />
-                    </div>
-                    <div className="max-w-48 mt-4 col-end-6">
                         <Dropdown />
+                    </div>
+                    <div className="size-auto mt-4 flex items-center justify-between gap-2">
+                        <DatePickerValue />
+                        <DatePickerValue />
                     </div>
                 </div>
                 <div className="flex items-center justify-between gap-2"></div>
@@ -48,7 +47,7 @@ export default async function Page({
                         currentPage={currentPage}
                     />
                 </Suspense>
-                <div className="mt-5 flex w-full justify-center">
+                <div className="mt-5 flex w-full justify-end">
                     <Pagination totalPages={totalPages} />
                 </div>
             </div>

@@ -1,4 +1,6 @@
-import SideNav from '@/app/ui/components/sidenav';
+import SideNav from '@/app/ui/dashboard/sidenav';
+import Navbar from './ui/dashboard/navbar';
+
 export const experimental_ppr = true;
 
 export default function Home({ children }: { children: React.ReactNode }) {

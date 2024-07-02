@@ -25,14 +25,14 @@ export default function Dropdown() {
     return (
         <div className="text-left">
             <Menu>
-                <MenuButton className="w-24 inline-flex items-center gap-2 rounded-md border bg-white-800 py-1.5 px-3 text-sm/6 font-semibold shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-100 data-[open]:bg-gray-100 data-[focus]:outline-1">
+                <MenuButton className="w-24 inline-flex items-center gap-2 rounded border bg-white py-1.5 px-3 text-sm/6 font-semibold data-[hover]:bg-gray-100 data-[open]:bg-gray-100">
                     <AdjustmentsHorizontalIcon className="size-4 fill-black/60" />
                     Filter
                 </MenuButton>
 
                 <MenuItems
                     anchor="bottom end"
-                    className="w-40 origin-top-right rounded-xl border border-white bg-grey-100 p-1 mt-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                    className="w-40 origin-top-right rounded-xl border bg-gray-100 p-1 mt-1 text-sm/6 text-black transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-100"
                 >
                     <>
                         {links.map(link => {

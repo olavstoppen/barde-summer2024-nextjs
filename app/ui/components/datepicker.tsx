@@ -1,19 +1,27 @@
 'use client';
 
-import { Datepicker } from 'flowbite-react';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/LocalizationProvider';
+import React from 'react';
 import { useState } from 'react';
+import dayjs, { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-export function DatepickerButton() {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+export default function DatePickerValue() {
+    const [dateParams, setValue] = React.useState<Dayjs | null>(
+        dayjs('2024-04-17'),
+    );
 
-    const handleDatePickerChange = (date: Date) => {
-        setSelectedDate(date);
-    };
+    function handleSearch(term: Dayjs | null) {
+        console.log(dateParams);
+    }
 
     return (
-        <Datepicker
-            name="selectedDate"
-            onSelectedDateChanged={handleDatePickerChange}
-        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+                value={dateParams}
+                onChange={newValue => setValue(newValue)}
+            />
+        </LocalizationProvider>
     );
 }

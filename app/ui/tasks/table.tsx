@@ -2,11 +2,14 @@ import { ArrowRightIcon } from '@heroicons/react/16/solid';
 import Link from 'next/link';
 import { promises as fs } from 'fs';
 import { task } from '@/app/lib/types';
+import dayjs, { Dayjs } from 'dayjs';
 
 export default async function InventoryTable({
+    date,
     query,
     currentPage,
 }: {
+    date: Dayjs | null | undefined;
     query: string;
     currentPage: number;
 }) {
@@ -18,12 +21,16 @@ export default async function InventoryTable({
 
     const tasks = data.task;
 
+    const filteredTasks = tasks.filter((index: task) =>
+        index.name.toString().includes(query),
+    );
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        {tasks?.map((task: task) => (
+                        {filteredTasks?.map((task: task) => (
                             <div
                                 key={task.id}
                                 className="mb-2 w-full rounded-md bg-white p-4"
@@ -109,7 +116,7 @@ export default async function InventoryTable({
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            {tasks.map((task: task) => (
+                            {filteredTasks.map((task: task) => (
                                 <tr
                                     key={task.id}
                                     className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"

@@ -2,24 +2,15 @@ import { Draggable } from '@hello-pangea/dnd';
 import { ArrowRightIcon } from '@heroicons/react/16/solid';
 import DatePicker from './datePicker';
 import { MouseEventHandler } from 'react';
+import { useKambanState } from '@/hooks/use-kanban-state';
 
-export default function KanbanTask({
-    item,
-    index,
-    onClick,
-}: {
-    item: any;
-    index: number;
-    onClick: MouseEventHandler<HTMLDivElement>;
-}) {
+export default function KanbanTask({ item, index }: { item: any; index: number }) {
+    const { kanbanState, setKanbanState } = useKambanState();
+
     return (
         <>
             <DatePicker />
-            <Draggable
-                key={item.id}
-                draggableId={item.id.toString()}
-                index={index}
-            >
+            <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
                 {(provided, snapshot) => {
                     return (
                         <div
@@ -31,16 +22,14 @@ export default function KanbanTask({
                                 padding: 8,
                                 margin: '0 0 0px 0',
                                 minHeight: '50px',
-                                backgroundColor: snapshot.isDragging
-                                    ? '#263B4A00'
-                                    : '#456C8600',
+                                backgroundColor: snapshot.isDragging ? '#263B4A00' : '#456C8600',
                                 color: 'white',
                                 ...provided.draggableProps.style,
                             }}
                         >
                             <div
                                 className="w-[198px] p-3 bg-zinc-100 rounded-xl shadow flex-col justify-start items-start gap-2.5 inline-flex scale-on-hover"
-                                onClick={onClick}
+                                onClick={() => setKanbanState({ ...kanbanState, activeTask: item.id })}
                             >
                                 <div className="self-stretch justify-between items-center inline-flex">
                                     <div className="text-zinc-700 text-xs font-medium font-['Roboto'] leading-none tracking-wide">
@@ -58,10 +47,7 @@ export default function KanbanTask({
                                         {item.type}
                                     </div>
 
-                                    <ArrowRightIcon
-                                        className="w-6 h-6 relative"
-                                        color="#1C1B1B"
-                                    />
+                                    <ArrowRightIcon className="w-6 h-6 relative" color="#1C1B1B" />
                                 </div>
                             </div>
                         </div>

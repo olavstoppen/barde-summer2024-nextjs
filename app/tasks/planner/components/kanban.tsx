@@ -17,6 +17,7 @@ import KanbanTask from './kanbanTask';
 import KanbanBoard from './kambanBoard';
 import Search from './search';
 import Filter from './filter';
+import { useKambanState } from '@/hooks/use-kanban-state';
 
 const customStyles = {
     content: {
@@ -30,78 +31,25 @@ const customStyles = {
 };
 
 export default function Kanban(taskData: any) {
+    const { kanbanState, setKanbanState } = useKambanState();
+
+    console.log(kanbanState);
     // The different columns
-    interface Column {
-        name: string;
-        items: task[];
-    }
+    // let subtitle: { style: { color: string } };
+    // const [modalIsOpen, setIsOpen] = React.useState(false);
 
-    const columnsFromBackend: { [key: string]: Column } = {
-        '1': {
-            name: 'Unplanned',
-            items: [],
-        },
-        '2': {
-            name: 'Planned',
-            items: [],
-        },
-        '3': {
-            name: 'Active',
-            items: [],
-        },
-        '4': {
-            name: 'Done',
-            items: [],
-        },
-    };
+    // function openModal() {
+    //     setIsOpen(true);
+    // }
 
-    for (let i = 0; i < taskData.data.length; i++) {
-        let taskInfo = taskData.data[i];
-        let task: task = {
-            id: taskInfo.id,
-            name: taskInfo.name,
-            type: taskInfo.type,
-            status: taskInfo.status,
-            description: taskInfo.description,
-            historic_data: taskInfo.historic_data,
-            start_date: taskInfo.start_date,
-            due_date: taskInfo.due_date,
-        };
+    // function afterOpenModal() {
+    //     // references are now sync'd and can be accessed.
+    //     subtitle.style.color = '#f00';
+    // }
 
-        switch (task.status) {
-            case 'Planned':
-                if (task.due_date == '') {
-                    columnsFromBackend['1'].items.push(task);
-                } else {
-                    columnsFromBackend['2'].items.push(task);
-                }
-                break;
-            case 'Active':
-                columnsFromBackend['3'].items.push(task);
-                break;
-            case 'Done':
-                columnsFromBackend['4'].items.push(task);
-                break;
-            default:
-                break;
-        }
-    }
-
-    let subtitle: { style: { color: string } };
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        subtitle.style.color = '#f00';
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
+    // function closeModal() {
+    //     setIsOpen(false);
+    // }
 
     return (
         <div
@@ -116,7 +64,7 @@ export default function Kanban(taskData: any) {
                     <Search />
                     <Filter />
                 </div>
-                <KanbanBoard columnsFromBackend={columnsFromBackend} />
+                <KanbanBoard />
             </div>
         </div>
     );

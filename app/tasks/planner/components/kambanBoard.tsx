@@ -4,6 +4,9 @@ import { task } from '@/app/lib/types';
 import { Key } from 'react';
 import { useState } from 'react';
 import DatePicker from './datePicker';
+import { InitialKanbanState, KanbandStateKeys, useKambanState } from '@/hooks/use-kanban-state';
+import { Dispatch } from 'react';
+import { SetStateAction } from 'react';
 
 const onDragEnd = (
     result: DropResult,
@@ -60,90 +63,88 @@ const onDragEnd = (
     }
 };
 
-export default function KanbanBoard({
-    columnsFromBackend,
-}: {
-    columnsFromBackend: any;
-}) {
-    const [columns, setColumns] = useState(columnsFromBackend);
+export default function KanbanBoard() {
+    // const [columns, setColumns] = useState(columnsFromBackend);
+    const { kanbanState, setKanbanState } = useKambanState();
+
+    const handleColumns = (
+        kanbanState: InitialKanbanState,
+        setKanbanState: Dispatch<SetStateAction<InitialKanbanState>>,
+        result: DropResult,
+    ) => {
+        const source = result.source.droppableId.toLowerCase() as KanbandStateKeys;
+        const destination = result.destination?.droppableId.toLowerCase() as KanbandStateKeys;
+
+        let sourceColumn = kanbanState.board[source];
+        let destColumn = kanbanState.board[destination];
+
+        destColumn.column.push(sourceColumn.column[result.source.index]);
+        sourceColumn.column.splice(result.source.index, 1);
+
+        setKanbanState({
+            ...kanbanState,
+            board: {
+                ...kanbanState.board,
+                [source]: sourceColumn,
+                [destination]: destColumn,
+            },
+        });
+    };
 
     return (
         <div className="self-stretch grow shrink basis-0 justify-start items-start gap-6 inline-flex">
             <DragDropContext
-                onDragEnd={result => onDragEnd(result, columns, setColumns)}
+                onDragEnd={result => {
+                    handleColumns(kanbanState, setKanbanState, result);
+                    // setKanbanState({
+                    //     ...kanbanState,
+                    //     board: { ...kanbanState.board, [result.source.droppableId.toLowerCase()]: kancolumn.filter },
+                    // });
+                }}
             >
-                {Object.entries(columns).map(
-                    ([columnId, column]: [string, any], index) => {
-                        return (
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                }}
-                                key={columnId}
-                            >
-                                <div style={{ margin: 4 }}>
-                                    <Droppable
-                                        droppableId={columnId}
-                                        key={columnId}
-                                    >
-                                        {(provided, snapshot) => {
-                                            return (
-                                                <div
-                                                    className="grow shrink basis-0 self-stretch p-4 bg-stone-100 rounded-2xl flex-col justify-start items-start inline-flex"
-                                                    {...provided.droppableProps}
-                                                    ref={provided.innerRef}
-                                                    style={{
-                                                        background:
-                                                            snapshot.isDraggingOver
-                                                                ? '#FFDBD0'
-                                                                : '#F7F3F2',
-                                                        width: 250,
-                                                        minHeight: 500,
-                                                    }}
-                                                >
-                                                    <div className="text-stone-900 text-xs font-medium font-['Roboto'] leading-none tracking-wide">
-                                                        {column.name}
-                                                    </div>
-                                                    {column.items.map(
-                                                        (
-                                                            item: {
-                                                                id:
-                                                                    | Key
-                                                                    | null
-                                                                    | undefined;
-                                                            },
-                                                            index: number,
-                                                        ) => {
-                                                            return (
-                                                                <KanbanTask
-                                                                    key={
-                                                                        item.id
-                                                                    }
-                                                                    item={item}
-                                                                    index={
-                                                                        index
-                                                                    }
-                                                                    onClick={function () {
-                                                                        console.log(
-                                                                            'Task clicked!',
-                                                                        );
-                                                                    }}
-                                                                />
-                                                            );
-                                                        },
-                                                    )}
-                                                    {provided.placeholder}
+                {/* onDragEnd(result, columns, setColumns) */}
+                {(Object.keys(kanbanState.board) as KanbandStateKeys[]).map((key, index) => {
+                    const name = kanbanState.board[key].name;
+                    const column = kanbanState.board[key].column;
+
+                    return (
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                            key={name}
+                        >
+                            <div style={{ margin: 4 }}>
+                                <Droppable droppableId={name} key={name}>
+                                    {(provided, snapshot) => {
+                                        return (
+                                            <div
+                                                className="grow shrink basis-0 self-stretch p-4 bg-stone-100 rounded-2xl flex-col justify-start items-start inline-flex"
+                                                {...provided.droppableProps}
+                                                ref={provided.innerRef}
+                                                style={{
+                                                    background: snapshot.isDraggingOver ? '#FFDBD0' : '#F7F3F2',
+                                                    width: 250,
+                                                    minHeight: 500,
+                                                }}
+                                            >
+                                                <div className="text-stone-900 text-xs font-medium font-['Roboto'] leading-none tracking-wide">
+                                                    {name}
                                                 </div>
-                                            );
-                                        }}
-                                    </Droppable>
-                                </div>
+                                                {column.map((item, index: number) => {
+                                                    return <KanbanTask key={item.id} item={item} index={index} />;
+                                                })}
+                                                {provided.placeholder}
+                                            </div>
+                                        );
+                                    }}
+                                </Droppable>
                             </div>
-                        );
-                    },
-                )}
+                        </div>
+                    );
+                })}
             </DragDropContext>
         </div>
     );

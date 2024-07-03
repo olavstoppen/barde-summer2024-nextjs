@@ -5,6 +5,7 @@ export type task = {
     status: 'Planned' | 'Active' | 'Done'; //Beskriver tilstanden til oppgaven
     description: string; //En mer detaljert beskrivelse av det som skal behandles
     historic_data: string[]; //Beskriver alt som har skjedd med oppgaven
+    date: string;
     start_date: string;
     due_date: string;
 };

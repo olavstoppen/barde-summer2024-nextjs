@@ -1,6 +1,4 @@
-import { machine } from '@/app/lib/types';
 import Breadcrumbs from '@/app/ui/components/breadcrumb';
-import { PlusIcon } from '@heroicons/react/16/solid';
 import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { Key } from 'react';
@@ -14,16 +12,16 @@ export default async function Page({ params }: { params: { id: number } }) {
     );
     const data = JSON.parse(file);
 
-    const machine = data.machine;
+    const tasks = data.task;
 
     return (
         <main>
             <Breadcrumbs
                 breadcrumbs={[
-                    { label: 'Inventory', href: '/inventory/' },
+                    { label: 'Inventory', href: '/tasks/' },
                     {
-                        label: `Machine ${id}`,
-                        href: `/inventory/${id}`,
+                        label: `Tasks ${id}`,
+                        href: `/tasks/${id}`,
                         active: true,
                     },
                 ]}
@@ -31,20 +29,23 @@ export default async function Page({ params }: { params: { id: number } }) {
             <div className="max-w-7xl">
                 <div className="px-4 sm:px-0">
                     <h3 className="text-base font-semibold leading-7 text-gray-900">
-                        Machine Information
+                        Vedlikeholdsoppgave
+                    </h3>
+                    <h3 className="text-base font-semibold leading-7 text-gray-900">
+                        {tasks[id - 1].name}
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                        Informatin about the given machine.
+                        Informatin about the given task.
                     </p>
                 </div>
                 <div className="mt-6 border-t border-gray-100">
                     <dl className="divide-y divide-gray-100">
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">
-                                Machine ID
+                                Task ID
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {machine[id - 1].id}
+                                {tasks[id - 1].id}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -52,7 +53,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                                 Machine Name
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {machine[id - 1].name}
+                                {tasks[id - 1].name}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -60,7 +61,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                                 Type
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {machine[id - 1].type}
+                                {tasks[id - 1].type}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -68,7 +69,15 @@ export default async function Page({ params }: { params: { id: number } }) {
                                 Status
                             </dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {machine[id - 1].status}
+                                {tasks[id - 1].status}
+                            </dd>
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">
+                                Dato
+                            </dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {tasks[id - 1].date}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -83,7 +92,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                                         overflow: 'auto',
                                     }}
                                 >
-                                    {machine[id - 1].historic_data.map(
+                                    {tasks[id - 1].historic_data.map(
                                         (item: string, index: Key) => (
                                             <li key={index} className="py-4">
                                                 <div className="flex items-left justify-between">
@@ -106,7 +115,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                 </div>
                 <div>
                     <Link
-                        href={`/inventory/`}
+                        href={`/tasks/`}
                         className="flex max-w-24 h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                     >
                         <span className="hidden md:block">Tilbake</span>

@@ -1,54 +1,74 @@
 {
     "task": [
         {
-            "id": 3042,
-            "name": "Yearly checkup for Excavator",
-            "type": "Service",
-            "status": "Planned",
+            "id": 1,
+            "name": "task 1000",
+            "type": 0,
+            "status": 0,
             "description": "Yearly check",
-            "historic_data": ["Yearly check"],
-            "start_date": "2022/03/14",
-            "due_date": "2022/03/17"
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
         },
         {
-            "id": 3043,
-            "name": "Yearly checkup for Tractor",
-            "type": "Service",
-            "status": "Active",
+            "id": 2,
+            "name": "task 2",
+            "type": 0,
+            "status": 2,
             "description": "Yearly check",
-            "historic_data": ["Yearly check"],
-            "start_date": "2022/03/14",
-            "due_date": "2022/03/17"
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-01-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
         },
         {
-            "id": 3044,
-            "name": "Yearly checkup for Roller Machine",
-            "type": "Service",
-            "status": "Done",
+            "id": 3,
+            "name": "task 3",
+            "type": 0,
+            "status": 3,
             "description": "Yearly check",
-            "historic_data": ["Yearly check"],
-            "start_date": "2022/03/14",
-            "due_date": "2022/03/17"
+            "historic_data": [
+                ["Changed oil", "Changed oil"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-11-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
         },
         {
-            "id": 3045,
-            "name": "Fix broken pipe in Tractor",
-            "type": "Repair",
-            "status": "Planned",
+            "id": 4,
+            "name": "task 4",
+            "type": 0,
+            "status": 3,
             "description": "Yearly check",
-            "historic_data": ["Yearly check"],
-            "start_date": "2022/03/14",
-            "due_date": ""
+            "historic_data": [
+                ["Changed oil", "Changed oil"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-11-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
         },
         {
-            "id": 3046,
-            "name": "Fix bad steering in Truck",
-            "type": "Repair",
-            "status": "Planned",
+            "id": 5,
+            "name": "Task 5",
+            "type": 0,
+            "status": 3,
             "description": "Yearly check",
-            "historic_data": ["Yearly check"],
-            "start_date": "2022/03/14",
-            "due_date": ""
+            "historic_data": [
+                ["Changed oil", "Changed oil"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-11-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
         }
     ],
     "machine": [
@@ -56,25 +76,76 @@
             "id": 1,
             "name": "machine 1",
             "type": 0,
-            "status": 3,
-            "historic_data": ["Yearly check machine 1"],
-            "last_yearly_check": "2022/11/07"
+            "status": "Maintenance",
+            "historic_data": [
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ]
+            ],
+            "last_yearly_check": "2022-11-07"
         },
         {
             "id": 2,
             "name": "machine 2",
             "type": 2,
-            "status": 3,
-            "historic_data": ["Yearly check machine 2"],
-            "last_yearly_chec": "2022/05/31"
+            "status": "In warehouse",
+            "historic_data": [
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ]
+            ],
+            "last_yearly_check": "2022-05-31"
         },
         {
             "id": 3,
             "name": "machine 3",
             "type": 3,
-            "status": 3,
-            "historic_data": ["Yearly check machine 3"],
-            "last_yearly_chec": "2022/01/17"
+            "status": "Done",
+            "historic_data": [
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ],
+                [
+                    "Yearly check",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dolor arcu, ac rutrum velit ullamcorper quis. Quisque quis nunc ut libero aliquam auctor nec id lectus. Praesent mollis ligula ac nibh pharetra, a aliquet velit aliquet. Proin tristique, elit a molestie vestibulum, nulla ipsum accumsan velit, vel tristique est nibh sit amet magna. Aliquam ut augue eu purus venenatis vulputate. Aliquam et odio eget dui bibendum venenatis et ac risus. Ut fermentum sed nisl sit amet porta. Donec venenatis fringilla elementum. Sed fringilla nibh quis ex imperdiet tincidunt. Sed id nunc a neque tempor vehicula. Maecenas ut nulla risus. "
+                ]
+            ],
+            "last_yearly_check": "2022-01-17"
         }
     ],
     "project": [

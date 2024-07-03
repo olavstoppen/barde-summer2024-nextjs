@@ -1,16 +1,8 @@
 import { PlusIcon } from '@heroicons/react/16/solid';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const machines = [
-    { id: 1, name: 'Maskin 1', tyngde: '10kg' },
-    { id: 2, name: 'Maskin 2', tyngde: '10kg' },
-    { id: 3, name: 'Maskin 3', tyngde: '10kg' },
-    { id: 4, name: 'Maskin 4', tyngde: '10kg' },
-    { id: 5, name: 'Maskin 5', tyngde: '10kg' },
-    { id: 6, name: 'Maskin 6', tyngde: '10kg' },
-    { id: 7, name: 'Maskin 7', tyngde: '10kg' },
-];
+import { promises as fs } from 'fs';
+import { machine } from '@/app/lib/types';
 
 export default async function InventoryTable({
     query,
@@ -19,34 +11,49 @@ export default async function InventoryTable({
     query: string;
     currentPage: number;
 }) {
+    const file = await fs.readFile(
+        process.cwd() + '/app/lib/data.json',
+        'utf8',
+    );
+    const data = JSON.parse(file);
+
+    const machine = data.machine;
+
     return (
         <div className="mt-6 flow-root">
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        {machines?.map(machines => (
+                        {machine?.map((machine: machine) => (
                             <div
-                                key={machines.id}
+                                key={machine.id}
                                 className="mb-2 w-full rounded-md bg-white p-4"
                             >
                                 <div className="flex items-center justify-between border-b pb-4">
                                     <div>
                                         <div className="mb-2 flex items-center">
-                                            <p>{machines.id}</p>
+                                            <p>{machine.id}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex w-full items-center justify-between pt-4">
                                     <div>
                                         <p className="text-xl font-medium">
-                                            {machines.name}
+                                            {machine.name}
                                         </p>
                                     </div>
                                 </div>
                                 <div className="flex w-full items-center justify-between pt-4">
                                     <div>
                                         <p className="text-xl font-medium">
-                                            {machines.tyngde}
+                                            {machine.type}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">
+                                            {machine.status}
                                         </p>
                                     </div>
                                 </div>
@@ -72,12 +79,18 @@ export default async function InventoryTable({
                                     scope="col"
                                     className="px-3 py-5 font-medium"
                                 >
-                                    Tyngde
+                                    Type
+                                </th>
+                                <th
+                                    scope="col"
+                                    className="px-3 py-5 font-medium"
+                                >
+                                    Status
                                 </th>
                             </tr>
                         </thead>
                         <tbody className="bg-white">
-                            {machines?.map(machine => (
+                            {machine.map((machine: machine) => (
                                 <tr
                                     key={machine.id}
                                     className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
@@ -91,7 +104,10 @@ export default async function InventoryTable({
                                         {machine.name}
                                     </td>
                                     <td className="whitespace-nowrap px-3 py-3">
-                                        {machine.tyngde}
+                                        {machine.type}
+                                    </td>
+                                    <td className="whitespace-nowrap px-3 py-3">
+                                        {machine.status}
                                     </td>
                                     <td className="whitespace-nowrap px-3 py-3">
                                         <div className="flex justify-end gap-3">

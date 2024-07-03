@@ -1,4 +1,4 @@
-import Pagination from '@/app/ui/inventory/pagination';
+import Pagination from '@/app/ui/components/pagination';
 import Table from '@/app/ui/inventory/table';
 import { Suspense } from 'react';
 
@@ -15,7 +15,7 @@ export default async function Page({
     const totalPages = 3;
 
     return (
-        <div className="w-full">
+        <div className="max-w-7xl">
             <div className="flex w-full items-center justify-between">
                 <h1 className={`text-2xl`}>Inventory</h1>
             </div>
@@ -23,7 +23,7 @@ export default async function Page({
             <Suspense key={query + currentPage}>
                 <Table query={query} currentPage={currentPage} />
             </Suspense>
-            <div className="mt-5 flex w-full justify-center">
+            <div className="mt-5 flex max-w-7xl justify-center">
                 <Pagination totalPages={totalPages} />
             </div>
         </div>

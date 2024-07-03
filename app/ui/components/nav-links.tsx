@@ -12,6 +12,7 @@ const links = [
     { name: 'Inventory', href: '/inventory', icon: TruckIcon },
     { name: 'Tasks', href: '/tasks', icon: TruckIcon },
     { name: 'Requests', href: '/request', icon: TruckIcon },
+    { name: 'Planner', href: '/tasks/planner', icon: DocumentDuplicateIcon },
 ];
 
 export default function NavLinks() {

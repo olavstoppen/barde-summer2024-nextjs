@@ -16,3 +16,11 @@ input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.scale-on-hover {
+    transition: transform 0.1s;
+}
+
+.scale-on-hover:hover {
+    transform: scale(1.05);
+}

@@ -2,21 +2,7 @@
     "task": [
         {
             "id": 1,
-            "name": "Task 100",
-            "type": 0,
-            "status": 0,
-            "description": "Yearly check",
-            "historic_data": [
-                ["Yearly check", "Performed yearly check"],
-                ["Changed lights", "Changed lights"]
-            ],
-            "date": "2022-03-17",
-            "start_date": "2022-03-14",
-            "due_date": "2022-03-17"
-        },
-        {
-            "id": 1,
-            "name": "Task 1000",
+            "name": "task 1000",
             "type": 0,
             "status": 0,
             "description": "Yearly check",
@@ -30,7 +16,7 @@
         },
         {
             "id": 2,
-            "name": "Task 2",
+            "name": "task 2",
             "type": 0,
             "status": 2,
             "description": "Yearly check",
@@ -44,7 +30,7 @@
         },
         {
             "id": 3,
-            "name": "Task 3",
+            "name": "task 3",
             "type": 0,
             "status": 3,
             "description": "Yearly check",
@@ -58,7 +44,7 @@
         },
         {
             "id": 4,
-            "name": "Task 4",
+            "name": "task 4",
             "type": 0,
             "status": 3,
             "description": "Yearly check",

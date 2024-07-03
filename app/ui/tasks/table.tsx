@@ -20,9 +20,10 @@ export default async function InventoryTable({
     const data = JSON.parse(file);
 
     const tasks = data.task;
+    const querylowerCase = query.toLowerCase();
 
-    const filteredTasks = tasks.filter((index: task) =>
-        index.name.toString().includes(query),
+    const filteredTasks = tasks.map((index: task) =>
+        index.name.toString().toLowerCase().includes(querylowerCase),
     );
 
     return (
@@ -30,58 +31,55 @@ export default async function InventoryTable({
             <div className="inline-block min-w-full align-middle">
                 <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
                     <div className="md:hidden">
-                        {tasks?.map(
-                            (tasks: task) =>
-                                tasks.name.toString().includes(query) && (
-                                    <div
-                                        key={tasks.id}
-                                        className="mb-2 w-full rounded-md bg-white p-4"
-                                    >
-                                        <div className="flex items-center justify-between border-b pb-4">
-                                            <div>
-                                                <div className="mb-2 flex items-center">
-                                                    <p>{tasks.due_date}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between border-b pb-4">
-                                            <div>
-                                                <div className="mb-2 flex items-center">
-                                                    <p>{tasks.id}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="flex w-full items-center justify-between pt-4">
-                                            <div>
-                                                <p className="text-xl font-medium">
-                                                    {tasks.name}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="flex w-full items-center justify-between pt-4">
-                                            <div>
-                                                <p className="text-xl font-medium">
-                                                    {tasks.type}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="flex w-full items-center justify-between pt-4">
-                                            <div>
-                                                <p className="text-xl font-medium">
-                                                    {tasks.status}
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="flex w-full items-center justify-between pt-4">
-                                            <div>
-                                                <p className="text-xl font-medium">
-                                                    {tasks.date}
-                                                </p>
-                                            </div>
+                        {filteredTasks?.map((tasks: task) => (
+                            <div
+                                key={tasks.id}
+                                className="mb-2 w-full rounded-md bg-white p-4"
+                            >
+                                <div className="flex items-center justify-between border-b pb-4">
+                                    <div>
+                                        <div className="mb-2 flex items-center">
+                                            <p>{tasks.due_date}</p>
                                         </div>
                                     </div>
-                                ),
-                        )}
+                                </div>
+                                <div className="flex items-center justify-between border-b pb-4">
+                                    <div>
+                                        <div className="mb-2 flex items-center">
+                                            <p>{tasks.id}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">
+                                            {tasks.name}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">
+                                            {tasks.type}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">
+                                            {tasks.status}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">
+                                            {tasks.date}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                     <table className="hidden min-w-full text-gray-900 md:table">
                         <thead className="rounded-lg text-left text-sm font-normal">

@@ -5,7 +5,7 @@ import Dropdown from '@/app/ui/dashboard/dropdown';
 export default async function Page() {
     return (
         <main>
-            <h1 className={`mb-4 text-xl md:text-2xl`}>Dashboard</h1>
+            <h1 className={`mb-4 text-xl md:text-2xl`}>Hjem</h1>
             <div className="mb-4 mt-4">
                 <Dropdown />
             </div>

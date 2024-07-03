@@ -1,18 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import {
-    DragDropContext,
-    Draggable,
-    DropResult,
-    Droppable,
-} from '@hello-pangea/dnd';
+import { DragDropContext, Draggable, DropResult, Droppable } from '@hello-pangea/dnd';
 import { task } from '@/app/lib/types';
-import {
-    ArrowRightIcon,
-    AdjustmentsHorizontalIcon,
-    MagnifyingGlassIcon,
-} from '@heroicons/react/16/solid';
+import { ArrowRightIcon, AdjustmentsHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 import KanbanTask from './kanbanTask';
 import KanbanBoard from './kambanBoard';
 import Search from './search';
@@ -31,26 +22,6 @@ const customStyles = {
 };
 
 export default function Kanban(taskData: any) {
-    const { kanbanState, setKanbanState } = useKambanState();
-
-    console.log(kanbanState);
-    // The different columns
-    // let subtitle: { style: { color: string } };
-    // const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    // function openModal() {
-    //     setIsOpen(true);
-    // }
-
-    // function afterOpenModal() {
-    //     // references are now sync'd and can be accessed.
-    //     subtitle.style.color = '#f00';
-    // }
-
-    // function closeModal() {
-    //     setIsOpen(false);
-    // }
-
     return (
         <div
             style={{

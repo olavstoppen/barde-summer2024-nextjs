@@ -20,7 +20,7 @@ export default function Navbar() {
                             className="relative rounded-full bg-black p-1 text-white hover:text-white"
                         >
                             <span className="absolute -inset-1.5" />
-                            <span className="sr-only">View notifications</span>
+                            <span className="sr-only">Notifikasjoner</span>
                             <BellIcon className="h-6 w-6" aria-hidden="true" />
                         </button>
 
@@ -29,13 +29,8 @@ export default function Navbar() {
                             <div>
                                 <MenuButton className="relative flex rounded-full bg-hvite text-sm">
                                     <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">
-                                        Open user menu
-                                    </span>
-                                    <UserCircleIcon
-                                        className="h-10 w-10"
-                                        aria-hidden="true"
-                                    />
+                                    <span className="sr-only">Brukermeny</span>
+                                    <UserCircleIcon className="h-10 w-10" aria-hidden="true" />
                                 </MenuButton>
                             </div>
                             <MenuItems
@@ -51,7 +46,7 @@ export default function Navbar() {
                                                 'block px-4 py-2 text-sm text-gray-700',
                                             )}
                                         >
-                                            Your Profile
+                                            Min Profil
                                         </a>
                                     )}
                                 </MenuItem>
@@ -64,7 +59,7 @@ export default function Navbar() {
                                                 'block px-4 py-2 text-sm text-gray-700',
                                             )}
                                         >
-                                            Settings
+                                            Innstillinger
                                         </a>
                                     )}
                                 </MenuItem>
@@ -77,7 +72,7 @@ export default function Navbar() {
                                                 'block px-4 py-2 text-sm text-gray-700',
                                             )}
                                         >
-                                            Sign out
+                                            Logg Ut
                                         </a>
                                     )}
                                 </MenuItem>

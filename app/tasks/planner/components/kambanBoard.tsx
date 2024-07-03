@@ -64,7 +64,6 @@ const onDragEnd = (
 };
 
 export default function KanbanBoard() {
-    // const [columns, setColumns] = useState(columnsFromBackend);
     const { kanbanState, setKanbanState } = useKambanState();
 
     const handleColumns = (

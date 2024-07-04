@@ -1,4 +1,5 @@
 import Breadcrumbs from '@/app/ui/components/breadcrumb';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { Key } from 'react';
@@ -13,6 +14,13 @@ export default async function Page({ params }: { params: { id: number } }) {
 
     return (
         <main>
+            <Link
+                href={`/tasks/`}
+                className="flex max-w-64 h-10 items-center rounded-lg text-lg font-medium text-black"
+            >
+                <ArrowLeftIcon className="w-4 h-4 m-2" />
+                <span className="">Tilbake</span>
+            </Link>
             <Breadcrumbs
                 breadcrumbs={[
                     { label: 'Inventory', href: '/tasks/' },
@@ -38,9 +46,15 @@ export default async function Page({ params }: { params: { id: number } }) {
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Navn</dt>
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Maskin</dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                 {tasks[id - 1].name}
+                            </dd>
+                        </div>
+                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Dato</dt>
+                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                                {tasks[id - 1].start_date}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -50,22 +64,16 @@ export default async function Page({ params }: { params: { id: number } }) {
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Status</dt>
+                            <dt className="text-sm font-medium leading-6 text-gray-900">Beskrivelse</dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].status}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Dato</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].date}
+                                {tasks[id - 1].description}
                             </dd>
                         </div>
                         <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                             <dt className="text-sm font-medium leading-6 text-gray-900">Historisk data</dt>
                             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
                                 <ul
-                                    className="bg-white overflow-hidden sm:rounded-md divide-y divide-gray-200 h-32 sm:h-auto sm:p-0"
+                                    className=" overflow-hidden sm:rounded-md divide-y divide-gray-200 h-32 sm:h-auto sm:p-0"
                                     style={{
                                         maxHeight: '400px',
                                         overflow: 'auto',
@@ -86,14 +94,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                         </div>
                     </dl>
                 </div>
-                <div>
-                    <Link
-                        href={`/tasks/`}
-                        className="flex max-w-24 h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                    >
-                        <span className="hidden md:block">Tilbake</span>
-                    </Link>
-                </div>
+                <div></div>
             </div>
         </main>
     );

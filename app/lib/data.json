@@ -3,8 +3,8 @@
         {
             "id": 1,
             "name": "task 1000",
-            "type": 0,
-            "status": 0,
+            "type": "Lekkasje",
+            "status": "Planned",
             "description": "Yearly check",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
@@ -17,8 +17,8 @@
         {
             "id": 2,
             "name": "task 2",
-            "type": 0,
-            "status": 2,
+            "type": "Motor",
+            "status": "'Unplanned'",
             "description": "Yearly check",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
@@ -31,8 +31,8 @@
         {
             "id": 3,
             "name": "task 3",
-            "type": 0,
-            "status": 3,
+            "type": "Service",
+            "status": "Unplanned",
             "description": "Yearly check",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
@@ -45,8 +45,8 @@
         {
             "id": 4,
             "name": "task 4",
-            "type": 0,
-            "status": 3,
+            "type": "Styring",
+            "status": "Planned",
             "description": "Yearly check",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
@@ -59,14 +59,84 @@
         {
             "id": 5,
             "name": "Task 5",
-            "type": 0,
-            "status": 3,
+            "type": "Styring",
+            "status": "Planned",
             "description": "Yearly check",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
                 ["Changed lights", "Changed lights"]
             ],
             "date": "2022-11-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 5,
+            "name": "Task 5",
+            "type": "Motor",
+            "status": "Unplanned",
+            "description": "Yearly check",
+            "historic_data": [
+                ["Changed oil", "Changed oil"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-11-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 1,
+            "name": "task 1000",
+            "type": "Lekkasje",
+            "status": "Planned",
+            "description": "Yearly check",
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 1,
+            "name": "task 1000",
+            "type": "Lekkasje",
+            "status": "Planned",
+            "description": "Yearly check",
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 1,
+            "name": "task 1000",
+            "type": "Lekkasje",
+            "status": "Planned",
+            "description": "Yearly check",
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
+            "start_date": "2022-03-14",
+            "due_date": "2022-03-17"
+        },
+        {
+            "id": 1,
+            "name": "task 1000",
+            "type": "Lekkasje",
+            "status": "Planned",
+            "description": "Yearly check",
+            "historic_data": [
+                ["Yearly check", "Performed yearly check"],
+                ["Changed lights", "Changed lights"]
+            ],
+            "date": "2022-03-17",
             "start_date": "2022-03-14",
             "due_date": "2022-03-17"
         }

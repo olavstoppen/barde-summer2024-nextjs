@@ -21,14 +21,10 @@ export default async function Page({
     const totalPages = 5;
     const date = dateParams;
 
-    console.log(search);
-
     return (
         <div>
             <div className="max-w-7xl">
-                <h1 className={`text-2xl max-w-72`}>
-                    Her er alle dine tidligere vedlikeholdsoppgaver
-                </h1>
+                <h1 className={`text-2xl max-w-72`}>Her er alle dine tidligere vedlikeholdsoppgaver</h1>
                 <div className="flex items-center justify-between gap-2 pt-5">
                     <div className="size-auto mt-4 flex items-center justify-between gap-2">
                         <Search placeholder="Search ..." />
@@ -41,11 +37,7 @@ export default async function Page({
                 </div>
                 <div className="flex items-center justify-between gap-2"></div>
                 <Suspense key={search + currentPage}>
-                    <Table
-                        query={search}
-                        date={date}
-                        currentPage={currentPage}
-                    />
+                    <Table query={search} date={date} currentPage={currentPage} />
                 </Suspense>
                 <div className="mt-5 flex w-full justify-end">
                     <Pagination totalPages={totalPages} />

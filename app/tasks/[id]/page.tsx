@@ -1,8 +1,9 @@
 import Breadcrumbs from '@/app/ui/components/breadcrumb';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { promises as fs } from 'fs';
 import Link from 'next/link';
 import { Key } from 'react';
+import image from 'public/bil.png';
 
 export default async function Page({ params }: { params: { id: number } }) {
     const id = params.id;
@@ -14,14 +15,111 @@ export default async function Page({ params }: { params: { id: number } }) {
 
     return (
         <main>
-            <Link
-                href={`/tasks/`}
-                className="flex max-w-64 h-10 items-center rounded-lg text-lg font-medium text-black"
-            >
-                <ArrowLeftIcon className="w-4 h-4 m-2" />
-                <span className="">Tilbake</span>
-            </Link>
-            <Breadcrumbs
+            <div className="flex justify-between ">
+                <Link
+                    href={`/tasks`}
+                    className="flex max-w-64 h-10 items-center rounded-lg text-lg font-medium text-black"
+                >
+                    <ArrowLeftIcon className="w-4 h-4 mr-4" />
+                    <span className="">Tilbake</span>
+                </Link>
+
+                <div className="inline-flex rounded-sm px-6" role="group">
+                    <button
+                        type="button"
+                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-outline rounded-s-lg"
+                    >
+                        Mottatt
+                    </button>
+                    <button
+                        type="button"
+                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-r border-t border-b border-outline"
+                    >
+                        Planlagt
+                    </button>
+                    <button
+                        type="button"
+                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-outline"
+                    >
+                        Aktiv
+                    </button>
+                    <button
+                        type="button"
+                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-outline rounded-e-lg"
+                    >
+                        Ferdig
+                    </button>
+                </div>
+            </div>
+
+            <div className="max-w-7xl">
+                <div className="px-6 sm:px-0">
+                    <h3 className="text-base pt-6 font-semibold text-[34px] leading-7 text-gray-900">
+                        Vedlikeholdsoppgave:
+                    </h3>
+                    <h3 className="text-base font-semibold pt-6 leading-7 text-[28px] text-pri">
+                        {tasks[id - 1].name}
+                    </h3>
+                    <div className="container">
+                        <img src={image} />
+                    </div>
+                </div>
+
+                <table className="hidden mb-6 mt-6 max-w-full md:table">
+                    <thead className="rounded-lg border-b border-surf space-y-[5px] text-left pl-4 text-md font-normal pb-6 bg-pri-cont">
+                        <tr>
+                            <th className="px-4 py-5 font-bold sm:pl-6 rounded-l-lg text-md">ID</th>
+                            <th className="px-4 py-5 font-bold sm:pl-6 text-md">Maskin</th>
+                            <th className="px-4 py-5 font-bold sm:pl-6  text-md">Dato</th>
+                            <th className="px-4 py-5 font-bold sm:pl-6  text-md">Type</th>
+                            <th className="px-4 py-5 font-bold sm:pl-6 rounded-r-lg text-md over">Beskrivelse</th>
+                        </tr>
+                    </thead>
+                    <tbody className="w-full max-w-96 bg-surf-cont border border-surf border-2 text-md">
+                        <tr>
+                            <td className="whitespace-nowrap py-6 text-left pl-6 rounded-l-lg">{tasks[id - 1].id}</td>
+                            <td className="whitespace-nowrap  py-6 text-left pl-6"> {tasks[id - 1].machine}</td>
+                            <td className="whitespace-nowrap py-6 text-left pl-6"> {tasks[id - 1].start_date}</td>
+                            <td className="whitespace-nowrap py-6 text-left pl-6"> {tasks[id - 1].type}</td>
+                            <td className="py-6 text-left pl-6 overflow-y-auto rounded-r-lg">
+                                {tasks[id - 1].description}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="rounded-xl bg-surf-cont-high py-2 mt-2 px-4 py-3 h-[750px] w-full">
+                        <p className="text-lg p-3 pb-5">Historikk</p>
+                        <div className="flex flex-col space-y-2 overflow-auto h-[700px] overflow-y-auto overflow-x-hidden">
+                            {tasks[id - 1].historic_data.map((item: string) => (
+                                <div className="flex space-x-4 pb-4 pl-2">
+                                    <CheckCircleIcon className="w-5 h-5" />
+                                    <div className="flex flex-col">
+                                        <p className="text-sm text-tert"> {item[2]} </p>
+                                        <p className="text-md">
+                                            {item[0]}: {item[1]}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="rounded-xl bg-surf-cont-high py-2 mt-2 px-4 py-3 h-[750px] w-full">
+                        <p className="text-lg p-3">Beskrivelse av det som er behandlet</p>
+                        <div className="m-3 overflow-auto h-[700px] overflow-y-auto overflow-x-hidden">
+                            <p> {tasks[id - 1].description}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+}
+
+/*
+
+
+<Breadcrumbs
                 breadcrumbs={[
                     { label: 'Inventory', href: '/tasks/' },
                     {
@@ -31,71 +129,6 @@ export default async function Page({ params }: { params: { id: number } }) {
                     },
                 ]}
             />
-            <div className="max-w-7xl">
-                <div className="px-4 sm:px-0">
-                    <h3 className="text-base font-semibold leading-7 text-gray-900">Vedlikeholdsoppgave</h3>
-                    <h3 className="text-base font-semibold leading-7 text-gray-900">{tasks[id - 1].name}</h3>
-                    <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Informasjon om oppgaven.</p>
-                </div>
-                <div className="mt-6 border-t border-gray-100">
-                    <dl className="divide-y divide-gray-100">
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">ID</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].id}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Maskin</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].name}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Dato</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].start_date}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Type</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].type}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Beskrivelse</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {tasks[id - 1].description}
-                            </dd>
-                        </div>
-                        <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                            <dt className="text-sm font-medium leading-6 text-gray-900">Historisk data</dt>
-                            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                <ul
-                                    className=" overflow-hidden sm:rounded-md divide-y divide-gray-200 h-32 sm:h-auto sm:p-0"
-                                    style={{
-                                        maxHeight: '400px',
-                                        overflow: 'auto',
-                                    }}
-                                >
-                                    {tasks[id - 1].historic_data.map((item: string, index: Key) => (
-                                        <li key={index} className="py-4">
-                                            <div className="flex items-left justify-between">
-                                                <p className="text-sm font-medium text-gray-900">{item[0]}</p>
-                                            </div>
-                                            <div className="flex items-left justify-between mt-3">
-                                                <p className="text-sm font-small text-gray-900">{item[1]}</p>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
-                <div></div>
-            </div>
-        </main>
-    );
-}
+
+
+*/

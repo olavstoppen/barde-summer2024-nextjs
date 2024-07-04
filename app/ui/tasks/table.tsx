@@ -62,12 +62,17 @@ export default async function InventoryTable({
                                         <p className="text-xl font-medium">{tasks.date}</p>
                                     </div>
                                 </div>
+                                <div className="flex w-full items-center justify-between pt-4">
+                                    <div>
+                                        <p className="text-xl font-medium">{tasks.date}</p>
+                                    </div>
+                                </div>
                             </div>
                         ))}
                     </div>
                     <table className="hidden min-w-full text-gray-900 md:table">
-                        <thead className="rounded-lg text-left text-sm font-normal">
-                            <tr key={tasks.id}>
+                        <thead className="rounded-lg text-left w-full text-sm font-normal">
+                            <tr key={tasks.id} className="rounded-lg bg-pri-cont">
                                 <th key={tasks.id} scope="col" className="px-4 py-5 font-medium sm:pl-6">
                                     Oppgave avsluttet
                                 </th>
@@ -79,6 +84,9 @@ export default async function InventoryTable({
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Type
+                                </th>
+                                <th scope="col" className="px-3 py-5 font-medium">
+                                    Status
                                 </th>
                                 <th scope="col" className="px-3 py-5 font-medium">
                                     Status

@@ -1,8 +1,8 @@
 export type task = {
     id: number; //Et unikt nummer som brukes for å identifisere den spesifikke oppgaven
     name: string; //Tittelen til oppgaven
-    type: string; //Beskriver hva oppgaven/feilen handler om (Lekkasje, Motor, Service, Styring)
-    status: 'Planned' | 'Active' | 'Done'; //Beskriver tilstanden til oppgaven
+    type: 'Lekkasje' | 'Motor' | 'Service' | 'Styring'; //Beskriver hva oppgaven/feilen handler om (Lekkasje, Motor, Service, Styring)
+    status: 'Unplanned' | 'Planned' | 'Active' | 'Done'; //Beskriver tilstanden til oppgaven
     description: string; //En mer detaljert beskrivelse av det som skal behandles
     historic_data: string[]; //Beskriver alt som har skjedd med oppgaven
     date: string;

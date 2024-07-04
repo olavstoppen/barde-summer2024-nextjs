@@ -24,10 +24,10 @@ export default async function Page({
     return (
         <div>
             <div className="max-w-7xl">
-                <h1 className={`text-2xl max-w-72`}>Her er alle dine tidligere vedlikeholdsoppgaver</h1>
+                <h1 className={`text-3xl max-w-[500px]`}>Her er alle dine tidligere vedlikeholdsoppgaver</h1>
                 <div className="flex items-center justify-between gap-2 pt-5">
-                    <div className="size-auto mt-4 flex items-center justify-between gap-2">
-                        <Search placeholder="Search ..." />
+                    <div className="size-auto mt-6 flex items-center justify-between gap-2">
+                        <Search placeholder="Søk etter oppgave ..." />
                         <Dropdown />
                     </div>
                     <div className="size-auto mt-4 flex items-center justify-between gap-2">

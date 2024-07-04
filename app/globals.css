@@ -61,6 +61,10 @@ div {
     letter-spacing: var(--Label-Large-Tracking, 0.1px);
 }
 
+body {
+    background-color: #fcf8f8;
+}
+
 input[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;

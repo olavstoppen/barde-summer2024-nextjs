@@ -2,10 +2,11 @@
     "task": [
         {
             "id": 1,
-            "name": "task 1000",
+            "name": "task 1",
             "type": "Lekkasje",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]
@@ -20,6 +21,7 @@
             "type": "Motor",
             "status": "'Unplanned'",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]
@@ -34,6 +36,7 @@
             "type": "Service",
             "status": "Unplanned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
                 ["Changed lights", "Changed lights"]
@@ -48,6 +51,7 @@
             "type": "Styring",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
                 ["Changed lights", "Changed lights"]
@@ -62,6 +66,7 @@
             "type": "Styring",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
                 ["Changed lights", "Changed lights"]
@@ -71,11 +76,12 @@
             "due_date": "2022-03-17"
         },
         {
-            "id": 5,
+            "id": 6,
             "name": "Task 5",
             "type": "Motor",
             "status": "Unplanned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Changed oil", "Changed oil"],
                 ["Changed lights", "Changed lights"]
@@ -85,11 +91,12 @@
             "due_date": "2022-03-17"
         },
         {
-            "id": 1,
+            "id": 7,
             "name": "task 1000",
             "type": "Lekkasje",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]
@@ -99,11 +106,12 @@
             "due_date": "2022-03-17"
         },
         {
-            "id": 1,
+            "id": 8,
             "name": "task 1000",
             "type": "Lekkasje",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]
@@ -113,11 +121,12 @@
             "due_date": "2022-03-17"
         },
         {
-            "id": 1,
+            "id": 9,
             "name": "task 1000",
             "type": "Lekkasje",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]
@@ -127,11 +136,12 @@
             "due_date": "2022-03-17"
         },
         {
-            "id": 1,
+            "id": 10,
             "name": "task 1000",
             "type": "Lekkasje",
             "status": "Planned",
             "description": "Yearly check",
+            "machine": "Traktor",
             "historic_data": [
                 ["Yearly check", "Performed yearly check"],
                 ["Changed lights", "Changed lights"]

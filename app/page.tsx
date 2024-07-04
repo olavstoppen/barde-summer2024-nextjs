@@ -1,5 +1,4 @@
 import SideNav from './ui/components/sidenav';
-import Navbar from './ui/dashboard/navbar';
 
 export const experimental_ppr = true;
 
@@ -9,9 +8,7 @@ export default function Home({ children }: { children: React.ReactNode }) {
             <div className="w-full flex-none md:w-64">
                 <SideNav />
             </div>
-            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">
-                {children}
-            </div>
+            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
         </div>
     );
 }

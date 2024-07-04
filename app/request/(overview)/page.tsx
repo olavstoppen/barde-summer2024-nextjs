@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { Field, Label, Switch } from '@headlessui/react';
 import Dropdown from '@/app/ui/dashboard/dropdown';
 
 export default function Page() {

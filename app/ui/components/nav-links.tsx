@@ -1,18 +1,25 @@
 'use client';
 
-import { DocumentDuplicateIcon, HomeIcon, TruckIcon } from '@heroicons/react/24/outline';
+import {
+    ArchiveBoxArrowDownIcon,
+    Bars3Icon,
+    CalendarDaysIcon,
+    CheckCircleIcon,
+    DocumentDuplicateIcon,
+    HomeIcon,
+    TruckIcon,
+} from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
 const links = [
     { name: 'Hjem', href: '/dashboard', icon: HomeIcon },
-    { name: 'Historikk', href: '/inventory', icon: TruckIcon },
-    { name: 'Oppgaver', href: '/tasks', icon: TruckIcon },
-    { name: 'Meld behov', href: '/request', icon: TruckIcon },
-    { name: 'Planlegger', href: '/tasks/planner', icon: DocumentDuplicateIcon },
+    { name: 'Inventory', href: '/inventory', icon: TruckIcon },
+    { name: 'Requests', href: '/request', icon: TruckIcon },
+    { name: 'Oppgaver', href: '/tasks/planner', icon: CheckCircleIcon },
+    { name: 'Kalender', href: '/tasks/planner', icon: CalendarDaysIcon },
+    { name: 'Historikk', href: '/tasks', icon: ArchiveBoxArrowDownIcon },
 ];
 
 export default function NavLinks() {
@@ -25,14 +32,13 @@ export default function NavLinks() {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className={clsx(
-                            'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
-                            {
-                                'bg-sky-100 text-blue-600': pathname === link.href,
-                            },
-                        )}
+                        className="flex flex-col grow items-center justify-center gap-2 text-sm font-medium md:flex-none md:justify-start  md:p-2 md:px-3"
                     >
-                        <LinkIcon className="w-6" />
+                        <LinkIcon
+                            className={clsx('rounded-2xl w-10 h-10 p-2', {
+                                'bg-sec-cont text-white w-10 h-10 rounded-2xl p-2': pathname === link.href,
+                            })}
+                        />
                         <p className="hidden md:block">{link.name}</p>
                     </Link>
                 );

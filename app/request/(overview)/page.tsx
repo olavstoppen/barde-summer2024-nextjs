@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { Field, Label, Switch } from '@headlessui/react';
 import Dropdown from '@/app/ui/dashboard/dropdown';
 
 export default function Page() {
@@ -13,20 +12,13 @@ export default function Page() {
                 aria-hidden="true"
             ></div>
             <div className="max-w-2xl">
-                <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Meld behov
-                </h3>
-                <p className="mt-2 text-lg leading-8 text-gray-600">
-                    Meld inn behov
-                </p>
+                <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Meld behov</h3>
+                <p className="mt-2 text-lg leading-8 text-gray-600">Meld inn behov</p>
             </div>
             <form action="#" method="POST" className="mt-12 max-w-xl">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                     <div>
-                        <label
-                            htmlFor="first-name"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
                             First name
                         </label>
                         <div className="mt-2.5">
@@ -40,10 +32,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div>
-                        <label
-                            htmlFor="last-name"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
                             Last name
                         </label>
                         <div className="mt-2.5">
@@ -60,10 +49,7 @@ export default function Page() {
                         <Dropdown />
                     </div>
                     <div className="sm:col-span-2">
-                        <label
-                            htmlFor="company"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="company" className="block text-sm font-semibold leading-6 text-gray-900">
                             Company
                         </label>
                         <div className="mt-2.5">
@@ -77,10 +63,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
                             Email
                         </label>
                         <div className="mt-2.5">
@@ -94,10 +77,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label
-                            htmlFor="phone-number"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="phone-number" className="block text-sm font-semibold leading-6 text-gray-900">
                             Phone number
                         </label>
                         <div className="relative mt-2.5">
@@ -129,10 +109,7 @@ export default function Page() {
                         </div>
                     </div>
                     <div className="sm:col-span-2">
-                        <label
-                            htmlFor="message"
-                            className="block text-sm font-semibold leading-6 text-gray-900"
-                        >
+                        <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
                             Message
                         </label>
                         <div className="mt-2.5">

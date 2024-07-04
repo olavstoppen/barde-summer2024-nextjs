@@ -2,6 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+h1 {
+    color: #000;
+
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 44px; /* 122.222% */
+}
+
+h2 {
+    color: #000;
+
+    /* M3/H2 */
+    font-family: 'Space Mono', monospace;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px; /* 128.571% */
+}
+
+h3 {
+    color: #000;
+
+    /* M3/Title */
+    font-family: 'Space Mono', monospace;
+    font-size: var(--Title-Large-Size, 18px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Title-Large-Line-Height, 24px); /* 133.333% */
+    letter-spacing: var(--Title-Large-Tracking, 0px);
+}
+
+p {
+    color: #000;
+
+    /* M3/Body */
+    font-family: 'Space Mono', monospace;
+    font-size: var(--Label-Large-Size, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
+    letter-spacing: var(--Label-Large-Tracking, 0.1px);
+}
+
+div {
+    color: #000;
+
+    /* M3/Body */
+    font-family: 'Space Mono', monospace;
+    font-size: var(--Label-Large-Size, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
+    letter-spacing: var(--Label-Large-Tracking, 0.1px);
+}
+
 input[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;
@@ -24,3 +83,4 @@ input[type='number']::-webkit-outer-spin-button {
 .scale-on-hover:hover {
     transform: scale(1.05);
 }
+

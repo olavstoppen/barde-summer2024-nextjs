@@ -7,82 +7,59 @@ import DatePicker from './datePicker';
 import { InitialKanbanState, KanbandStateKeys, useKambanState } from '@/hooks/use-kanban-state';
 import { Dispatch } from 'react';
 import { SetStateAction } from 'react';
+import Modal from 'react-modal';
+import React from 'react';
 
-const onDragEnd = (
-    result: DropResult,
-    columns: {
-        [x: string]: any;
-        [x: number]: {
-            name: string;
-            items: task[];
-        };
-    },
-    setColumns: CallableFunction,
-) => {
-    if (!result.destination) return;
-    const { source, destination } = result;
-    const item = columns[source.droppableId].items[source.index];
-
-    if (source.droppableId !== destination.droppableId) {
-        // If the task is moved to another column
-        const sourceColumn = columns[source.droppableId];
-        const destColumn = columns[destination.droppableId];
-        const sourceItems = [...sourceColumn.items];
-        const destItems = [...destColumn.items];
-        const [removed] = sourceItems.splice(source.index, 1);
-
-        if (source.droppableId === '1' && destination.droppableId === '2') {
-            console.log('Insert code for date insertion here!');
-        }
-
-        destItems.splice(destination.index, 0, removed);
-        setColumns({
-            ...columns,
-            [source.droppableId]: {
-                ...sourceColumn,
-                items: sourceItems,
-            },
-            [destination.droppableId]: {
-                ...destColumn,
-                items: destItems,
-            },
-        });
-    } else {
-        // If the task is moved within the same column
-        const column = columns[source.droppableId];
-        const copiedItems = [...column.items];
-        const [removed] = copiedItems.splice(source.index, 1);
-        copiedItems.splice(destination.index, 0, removed);
-        setColumns({
-            ...columns,
-            [source.droppableId]: {
-                ...column,
-                items: copiedItems,
-            },
-        });
-    }
-};
-
-export default function KanbanBoard() {
-    // const [columns, setColumns] = useState(columnsFromBackend);
+export function closeModal() {
+    console.log('clicked');
     const { kanbanState, setKanbanState } = useKambanState();
 
+    setKanbanState({
+        ...kanbanState,
+        activeTask: undefined,
+    });
+}
+
+export default function KanbanBoard() {
+    const { kanbanState, setKanbanState } = useKambanState();
+
+    function closeModal() {
+        setKanbanState({
+            ...kanbanState,
+            activeTask: undefined,
+        });
+    }
+
+    // Function is triggered when a task is moved from one column to another
     const handleColumns = (
         kanbanState: InitialKanbanState,
         setKanbanState: Dispatch<SetStateAction<InitialKanbanState>>,
         result: DropResult,
     ) => {
+        // Get the source and destination column key eg: planned, unplanned, active, done
         const source = result.source.droppableId.toLowerCase() as KanbandStateKeys;
         const destination = result.destination?.droppableId.toLowerCase() as KanbandStateKeys;
 
+        // Get the source and destination column from the board
         let sourceColumn = kanbanState.board[source];
         let destColumn = kanbanState.board[destination];
 
-        destColumn.column.push(sourceColumn.column[result.source.index]);
+        let task = sourceColumn.column[result.source.index];
+
+        // Remove the task from the source column
         sourceColumn.column.splice(result.source.index, 1);
 
+        // Add the task to the destination column
+        if (task != undefined) {
+            destColumn.column.splice(result.destination!.index, 0, task);
+        }
+
+        let activeTask = source === 'unplanned' && destination === 'planned' ? task : undefined;
+
+        // Update the hook state
         setKanbanState({
             ...kanbanState,
+            activeTask: activeTask,
             board: {
                 ...kanbanState.board,
                 [source]: sourceColumn,
@@ -91,18 +68,34 @@ export default function KanbanBoard() {
         });
     };
 
+    const customStyles = {
+        content: {
+            width: '300px',
+            height: '300px',
+            margin: 'auto',
+            padding: '20px',
+            borderRadius: '10px',
+        },
+    };
+
     return (
         <div className="self-stretch grow shrink basis-0 justify-start items-start gap-6 inline-flex">
+            <Modal
+                isOpen={kanbanState.activeTask != undefined}
+                onRequestClose={closeModal}
+                onAfterClose={() => {}}
+                onAfterOpen={() => {}}
+                ariaHideApp={false}
+                contentLabel="Calendar Modal"
+                style={customStyles}
+            >
+                <DatePicker />
+            </Modal>
             <DragDropContext
                 onDragEnd={result => {
                     handleColumns(kanbanState, setKanbanState, result);
-                    // setKanbanState({
-                    //     ...kanbanState,
-                    //     board: { ...kanbanState.board, [result.source.droppableId.toLowerCase()]: kancolumn.filter },
-                    // });
                 }}
             >
-                {/* onDragEnd(result, columns, setColumns) */}
                 {(Object.keys(kanbanState.board) as KanbandStateKeys[]).map((key, index) => {
                     const name = kanbanState.board[key].name;
                     const column = kanbanState.board[key].column;
@@ -117,30 +110,38 @@ export default function KanbanBoard() {
                             key={name}
                         >
                             <div style={{ margin: 4 }}>
-                                <Droppable droppableId={name} key={name}>
-                                    {(provided, snapshot) => {
-                                        return (
-                                            <div
-                                                className="grow shrink basis-0 self-stretch p-4 bg-stone-100 rounded-2xl flex-col justify-start items-start inline-flex"
-                                                {...provided.droppableProps}
-                                                ref={provided.innerRef}
-                                                style={{
-                                                    background: snapshot.isDraggingOver ? '#FFDBD0' : '#F7F3F2',
-                                                    width: 250,
-                                                    minHeight: 500,
-                                                }}
-                                            >
-                                                <div className="text-stone-900 text-xs font-medium font-['Roboto'] leading-none tracking-wide">
-                                                    {name}
+                                <div className="w-[242px] h-[484px] p-4 bg-stone-200 rounded-2xl flex-col justify-start items-start gap-4 inline-flex">
+                                    <div className="text-stone-900 text-lg font-normal font-['Space Mono'] leading-normal">
+                                        {
+                                            {
+                                                Unplanned: 'Ubehandlet',
+                                                Planned: 'Planlagt',
+                                                Active: 'Aktiv',
+                                                Done: 'Ferdig',
+                                            }[name]
+                                        }
+                                    </div>
+                                    <Droppable droppableId={name} key={name}>
+                                        {(provided, snapshot) => {
+                                            return (
+                                                <div
+                                                    className="grow shrink basis-0 self-stretch rounded-2xl flex-col justify-start items-start inline-flex"
+                                                    {...provided.droppableProps}
+                                                    ref={provided.innerRef}
+                                                    style={{
+                                                        width: 250,
+                                                        minHeight: 500,
+                                                    }}
+                                                >
+                                                    {column.map((item, index: number) => {
+                                                        return <KanbanTask key={item.id} item={item} index={index} />;
+                                                    })}
+                                                    {provided.placeholder}
                                                 </div>
-                                                {column.map((item, index: number) => {
-                                                    return <KanbanTask key={item.id} item={item} index={index} />;
-                                                })}
-                                                {provided.placeholder}
-                                            </div>
-                                        );
-                                    }}
-                                </Droppable>
+                                            );
+                                        }}
+                                    </Droppable>
+                                </div>
                             </div>
                         </div>
                     );

@@ -17,7 +17,7 @@ export default async function Page({
     return (
         <div className="max-w-7xl">
             <div className="flex w-full items-center justify-between">
-                <h1 className={`text-2xl`}>Inventory</h1>
+                <h1 className={`text-2xl`}>Historikk</h1>
             </div>
             <div className="mt-4 flex items-center justify-between gap-2 md:mt-8"></div>
             <Suspense key={query + currentPage}>

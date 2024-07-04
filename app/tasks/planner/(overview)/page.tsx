@@ -18,7 +18,7 @@ export default async function Page() {
             <div className="w-[504px] text-stone-900 text-4xl font-normal font-['Space Mono'] leading-[44px]">
                 Her er alle dine vedlikeholdsoppgaver
             </div>
-            <Kanban data={data.task} />
+            <Kanban />
         </main>
     );
 }

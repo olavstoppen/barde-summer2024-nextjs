@@ -1,3 +1,5 @@
+import path from 'path';
+import { promises } from 'fs';
 import { useState } from 'react';
 
 export const useKambanState = () => {
@@ -6,7 +8,11 @@ export const useKambanState = () => {
         board: {
             unplanned: {
                 name: 'Unplanned',
-                column: [{ id: '1', date: new Date(), name: 'Task 1', type: 'Task' }],
+                column: [
+                    { id: '1', date: new Date(), name: 'Task 0', type: 'Task' },
+                    { id: '2', date: new Date(), name: 'Task 1', type: 'Task' },
+                    { id: '3', date: new Date(), name: 'Task 2', type: 'Task' },
+                ],
             },
             planned: {
                 name: 'Planned',
@@ -29,7 +35,7 @@ export const useKambanState = () => {
 export type KanbandStateKeys = 'unplanned' | 'planned' | 'active' | 'done';
 
 export type InitialKanbanState = {
-    activeTask: number | undefined;
+    activeTask: KanbanTask | undefined;
     board: {
         [key in KanbandStateKeys]: KanbanColumn;
     };

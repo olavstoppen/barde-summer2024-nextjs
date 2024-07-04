@@ -2,8 +2,9 @@ import Breadcrumbs from '@/app/ui/components/breadcrumb';
 import { ArrowLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { promises as fs } from 'fs';
 import Link from 'next/link';
-import { Key } from 'react';
-import image from 'public/bil.png';
+import React from 'react';
+//import image from 'public/bil.png';
+// <img src={image} />
 
 export default async function Page({ params }: { params: { id: number } }) {
     const id = params.id;
@@ -60,9 +61,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                     <h3 className="text-base font-semibold pt-6 leading-7 text-[28px] text-pri">
                         {tasks[id - 1].name}
                     </h3>
-                    <div className="container">
-                        <img src={image} />
-                    </div>
+                    <div className="container"></div>
                 </div>
 
                 <table className="hidden mb-6 mt-6 max-w-full md:table">

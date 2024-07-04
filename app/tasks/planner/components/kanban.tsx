@@ -21,7 +21,7 @@ const customStyles = {
     },
 };
 
-export default function Kanban(taskData: any) {
+export default function Kanban() {
     return (
         <div
             style={{
@@ -30,7 +30,7 @@ export default function Kanban(taskData: any) {
                 height: '100%',
             }}
         >
-            <div className=" p-6 bg-stone-200 rounded-[28px] flex-col justify-start items-start gap-2.5 inline-flex">
+            <div className=" p-6 relative rounded-[28px] flex-col justify-start items-start gap-2.5 inline-flex">
                 <div className="self-stretch justify-start items-start gap-2 inline-flex">
                     <Search />
                     <Filter />

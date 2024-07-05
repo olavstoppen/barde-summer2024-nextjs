@@ -36,7 +36,7 @@ export default function NavLinks() {
                     >
                         <LinkIcon
                             className={clsx('rounded-2xl w-10 h-10 p-2', {
-                                'bg-sec-cont text-white w-10 h-10 rounded-2xl p-2': pathname === link.href,
+                                'bg-sec-cont text-white w-10 h-10 rounded-2xl p-2': pathname.includes(link.href),
                             })}
                         />
                         <p className="hidden md:block">{link.name}</p>

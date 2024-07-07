@@ -86,7 +86,7 @@ export const columns: ColumnDef<task>[] = [
     cell: ({ row }) => {
       return(
       <Link
-      href={`/tasks/${row.id}`}
+      href={`/tasks/${(parseInt(row.id)+1).toString()}`}
       className="flex h-10 rounded-xl items-center rounded-lg px-4 text-sm font-medium"
   >
       <ArrowRightIcon className="h-5 md:ml-4 text-pri rounded-xl" />

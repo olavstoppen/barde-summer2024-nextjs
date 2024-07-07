@@ -1,6 +1,5 @@
 import { task } from '@/app/lib/types';
-import { useKambanState } from '@/hooks/use-kanban-state';
-import { BanknotesIcon, ClockIcon, UserGroupIcon, InboxIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 import { promises as fs } from 'fs';
 import Link from 'next/link';

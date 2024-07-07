@@ -6,10 +6,9 @@ import { ArrowUpDown } from 'lucide-react'
 
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
-import { Button } from '@/components/ui/button'
-
-import { task } from '../lib/types'
 import Link from 'next/link'
+import { Button } from '@/app/ui/tasks/table/button'
+import { task } from '@/app/lib/types'
 
 export const columns: ColumnDef<task>[] = [
   {

@@ -16,9 +16,9 @@ export default async function Page() {
   const data = await getTasks()
 
   return (
-    <section className='py-24'>
+    <section>
       <div className='container'>
-        <h1 className='mb-6 text-3xl font-bold'>Tasks</h1>
+        <h1 className='text-3xl'>Tasks</h1>
         <DataTable columns={columns} data={data} />
       </div>
     </section>

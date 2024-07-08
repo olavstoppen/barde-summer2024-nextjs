@@ -22,7 +22,6 @@ export type machine = {
 export type project = {
     id: number; //Et unikt nummer som brukes for å identifisere det spesifikke prosjektet
     name: string; //Tittelen til prosjektet
-    type: string;
     status: 'Planned' | 'Active' | 'Done'; //Beskriver tilstanden til prosjektet
     description: string;
     historic_data: string[]; //Beskriver alt som har skjedd på prosjektet

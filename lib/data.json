@@ -250,19 +250,19 @@
         {
             "id": 1,
             "name": "project 1",
-            "type": 0,
+            "status": "Done",
             "historic_data": ["start project 1"]
         },
         {
             "id": 2,
             "name": "project 2",
-            "status": 2,
+            "status": "Active",
             "historic_data": ["start project 2"]
         },
         {
             "id": 3,
             "name": "project 3",
-            "status": 3,
+            "status": "Planned",
             "historic_data": ["start project 3"]
         }
     ]

@@ -1,5 +1,5 @@
 import { task } from '@/lib/types';
-import { DataTable } from '@/app/ui/maintenance/tasks-data-table';
+import { DataTable } from '@/app/ui/project/project-data-table';
 import { promises as fs } from 'fs';
 import { columns } from './columns';
 

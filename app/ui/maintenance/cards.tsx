@@ -3,7 +3,7 @@ import { AdjustmentsHorizontalIcon, ArrowRightIcon } from '@heroicons/react/24/o
 
 import { promises as fs } from 'fs';
 import Link from 'next/link';
-import { Button } from '../components/table/button';
+import { Button } from '../../../components/ui/button';
 
 export async function Tasks({ title, value }: { title: string; value: number | string }) {
     const file = await fs.readFile(process.cwd() + '/lib/data.json', 'utf8');
@@ -47,7 +47,7 @@ export async function Tasks({ title, value }: { title: string; value: number | s
     );
 }
 
-export function Week({ title }: { title: string }) {
+export function Buttons({ title }: { title: string }) {
     return (
         <div className="rounded-xl p-4 h-[850px] shadow-sm h-96 w-max-lg">
             <div className={`flex flex-col rounded-xl mt-2 px-4 py-3 h-72 h-[750px]`}>

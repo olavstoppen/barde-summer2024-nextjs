@@ -18,17 +18,16 @@ import {
 import { AdjustmentsHorizontalIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import { addDays } from 'date-fns';
+import { Input } from '@/components/ui/input';
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '../components/table/dropdown-menu';
-import { Input } from '../components/table/input';
-import { Button } from '../components/table/button';
-import { DatePickerWithRange } from '../components/table/date-picker';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/table/table';
-import { DataTablePagination } from '../components/table/table-pagination';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { DataTablePagination } from '@/components/ui/table-pagination';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];

@@ -1,6 +1,7 @@
 import Kanban from '../components/kanban';
 import path from 'path';
 import { promises } from 'fs';
+import Breadcrumbs from '@/app/ui/components/breadcrumb';
 
 export async function getData() {
     // Fetch data from the database
@@ -14,7 +15,10 @@ export default async function Page() {
     //sending data to the Kanban component
     return (
         <main>
-            <div className="w-[504px] text-stone-900 text-4xl font-normal font-['Space Mono'] leading-[44px]">
+            <div className="mb-4">
+                <Breadcrumbs componentslink="maintenance" components="Vedlikehold" breadcrumb="Vedlikeholdsoppgaver" />
+            </div>
+            <div className="w-[504px] mb-4 text-stone-900 text-4xl font-normal font-['Space Mono'] leading-[44px]">
                 Her er alle dine vedlikeholdsoppgaver
             </div>
             <Kanban />

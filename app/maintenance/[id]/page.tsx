@@ -1,53 +1,59 @@
-import Breadcrumbs from '@/app/ui/components/breadcrumb';
+import Breadcrumbs4 from '@/app/ui/components/breadcrumb';
 import { ArrowLeftIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import { promises as fs } from 'fs';
-import Link from 'next/link';
+
 import React from 'react';
-//import image from '/bil.png';
-// <img src={image} />
 import Image from 'next/image';
 
 export default async function Page({ params }: { params: { id: number } }) {
     const id = params.id;
 
-    const file = await fs.readFile(process.cwd() + '/app/lib/data.json', 'utf8');
+    const file = await fs.readFile(process.cwd() + '/lib/data.json', 'utf8');
     const data = JSON.parse(file);
 
     const tasks = data.task;
 
     return (
         <main>
-            <div className="flex max-w-8xl justify-between ">
-                <Link
-                    href={`/tasks`}
-                    className="flex max-w-64 h-10 items-center rounded-lg text-lg font-medium text-black"
-                >
-                    <ArrowLeftIcon className="w-4 h-4 mr-4" />
-                    <span className="">Tilbake</span>
-                </Link>
+            <div>
+                <Breadcrumbs4
+                    componentslink="maintenance/history"
+                    components="Historikk"
+                    breadcrumb={tasks[id - 1].id}
+                />
+            </div>
 
-                <div className="inline-flex rounded-sm px-6" role="group">
+            <div className="flex max-w-8xl justify-between ">
+                <div>
+                    <div className="px-6 sm:px-0 mt-5 mb-7">
+                        <h3 className="text-base pt-6 font-medium text-[30px] leading-7 text-gray-900">
+                            Vedlikeholdsoppgave:
+                        </h3>
+                        <h3 className="text-base font-medium pt-6 text-[28px] text-pri">{tasks[id - 1].name}</h3>
+                    </div>
+                </div>
+                <div className="inline-flex max-h-[50px] rounded-sm" role="group">
                     <button
                         type="button"
-                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-outline rounded-s-lg hover:bg-pri-cont"
+                        className="px-4 py-2 max-h-sm text-sm font-medium text-gray-900 bg-white border border-outline rounded-s-lg hover:bg-pri-cont"
                     >
                         Mottatt
                     </button>
                     <button
                         type="button"
-                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-r border-t border-b border-outline hover:bg-pri-cont"
+                        className="px-4 py-2 max-h-sm text-sm font-medium text-gray-900 bg-white border-r border-t border-b border-outline hover:bg-pri-cont"
                     >
                         Planlagt
                     </button>
                     <button
                         type="button"
-                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-outline hover:bg-pri-cont"
+                        className="px-4 py-2 max-h-sm text-sm font-medium text-gray-900 bg-white border-t border-b border-outline hover:bg-pri-cont"
                     >
                         Aktiv
                     </button>
                     <button
                         type="button"
-                        className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-outline rounded-e-lg hover:bg-pri-cont"
+                        className="px-4 py-2 max-h-sm text-sm font-medium text-gray-900 bg-white border border-outline rounded-e-lg hover:bg-pri-cont"
                     >
                         Ferdig
                     </button>
@@ -55,12 +61,6 @@ export default async function Page({ params }: { params: { id: number } }) {
             </div>
 
             <div className="max-w-8xl">
-                <div className="px-6 sm:px-0 mt-5 mb-7">
-                    <h3 className="text-base pt-6 font-medium text-[38px] leading-7 text-gray-900">
-                        Vedlikeholdsoppgave:
-                    </h3>
-                    <h3 className="text-base font-medium pt-6 leading-7 text-[36px] text-pri">{tasks[id - 1].name}</h3>
-                </div>
                 <div className="flex justify-center items-center">
                     <Image src={'/bil.png'} alt={'alt'} width="1000" height="350" />
                 </div>
@@ -116,20 +116,3 @@ export default async function Page({ params }: { params: { id: number } }) {
         </main>
     );
 }
-
-/*
-
-
-<Breadcrumbs
-                breadcrumbs={[
-                    { label: 'Inventory', href: '/tasks/' },
-                    {
-                        label: `Tasks ${id}`,
-                        href: `/tasks/${id}`,
-                        active: true,
-                    },
-                ]}
-            />
-
-
-*/

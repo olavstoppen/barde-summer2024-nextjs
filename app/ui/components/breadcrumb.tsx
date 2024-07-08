@@ -1,37 +1,50 @@
 import { clsx } from 'clsx';
 import Link from 'next/link';
+import {
+    Breadcrumb,
+    BreadcrumbEllipsis,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 
-interface Breadcrumb {
-    label: string;
-    href: string;
-    active?: boolean;
-}
-
-export default function Breadcrumbs({
-    breadcrumbs,
-}: {
-    breadcrumbs: Breadcrumb[];
-}) {
+export default function Breadcrumbs({ componentslink, components, breadcrumb }: any) {
     return (
-        <nav aria-label="Breadcrumb" className="mb-6 block">
-            <ol className={clsx('flex text-xl md:text-2xl')}>
-                {breadcrumbs.map((breadcrumb, index) => (
-                    <li
-                        key={breadcrumb.href}
-                        aria-current={breadcrumb.active}
-                        className={clsx(
-                            breadcrumb.active
-                                ? 'text-gray-900'
-                                : 'text-gray-500',
-                        )}
-                    >
-                        <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
-                        {index < breadcrumbs.length - 1 ? (
-                            <span className="mx-3 inline-block">/</span>
-                        ) : null}
-                    </li>
-                ))}
-            </ol>
-        </nav>
+        <Breadcrumb>
+            <BreadcrumbList>
+                <BreadcrumbItem>
+                    <BreadcrumbLink href="/dashboard">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                    <BreadcrumbLink href={`/${componentslink}`}>{components}</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                    <BreadcrumbPage>{breadcrumb}</BreadcrumbPage>
+                </BreadcrumbItem>
+            </BreadcrumbList>
+        </Breadcrumb>
+    );
+}
+export function Breadcrumbs4({ componentslink, components, breadcrumb }: any) {
+    return (
+        <Breadcrumb>
+            <BreadcrumbList>
+                <BreadcrumbItem>
+                    <BreadcrumbLink href="/dashboard">Home</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbEllipsis />
+                <BreadcrumbItem>
+                    <BreadcrumbLink href={`/${componentslink}`}>{components}</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                    <BreadcrumbPage>{breadcrumb}</BreadcrumbPage>
+                </BreadcrumbItem>
+            </BreadcrumbList>
+        </Breadcrumb>
     );
 }

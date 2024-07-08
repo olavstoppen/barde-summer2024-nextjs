@@ -5,7 +5,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 
 import Link from 'next/link';
-import { Button } from '@/app/ui/components/table/button';
+import { Button } from '@/components/ui/button';
 import { task } from '@/lib/types';
 import { ArrowUpIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
 
@@ -73,7 +73,7 @@ export const columns: ColumnDef<task>[] = [
         cell: ({ row }) => {
             return (
                 <Link
-                    href={`/tasks/${(parseInt(row.id) + 1).toString()}`}
+                    href={`/maintenance/${(parseInt(row.id) + 1).toString()}`}
                     className="flex h-10 rounded-xl items-center rounded-lg px-4 text-sm font-medium"
                 >
                     <ArrowRightIcon className="h-5 md:ml-4 text-pri rounded-xl" />

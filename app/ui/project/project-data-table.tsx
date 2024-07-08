@@ -18,17 +18,17 @@ import {
 import { AdjustmentsHorizontalIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import { addDays } from 'date-fns';
+
+import { DataTablePagination } from '../../../components/ui/table-pagination';
+import { Input } from '@/components/ui/input';
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '../components/table/dropdown-menu';
-import { Input } from '../components/table/input';
-import { Button } from '../components/table/button';
-import { DatePickerWithRange } from '../components/table/date-picker';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/table/table';
-import { DataTablePagination } from '../components/table/table-pagination';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -57,7 +57,6 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
         onRowSelectionChange: setRowSelection,
     });
 
-    const machines = ['Traktor', 'Gravemaskin', 'Lastebil'];
     const status = ['Planned', 'Active', 'Done'];
 
     return (
@@ -72,34 +71,6 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                         onChange={event => table.getColumn('name')?.setFilterValue(event.target.value)}
                         className="max-w-sm mr-3"
                     />
-
-                    {/* Machine filter*/}
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="outline" className="ml-auto pr-4 mr-3">
-                                <AdjustmentsHorizontalIcon className="w-5 h-5 pr-1" />
-                                Maskin
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start">
-                            {machines.map((item: string) => {
-                                return (
-                                    <DropdownMenuCheckboxItem
-                                        key={item}
-                                        className="capitalize"
-                                        checked={table.getColumn('type')?.getFilterValue() === item}
-                                        onCheckedChange={() =>
-                                            table.getColumn('type')?.getFilterValue() === item
-                                                ? table.getColumn('type')?.setFilterValue('')
-                                                : table.getColumn('type')?.setFilterValue(item)
-                                        }
-                                    >
-                                        {item}
-                                    </DropdownMenuCheckboxItem>
-                                );
-                            })}
-                        </DropdownMenuContent>
-                    </DropdownMenu>
 
                     {/* Status filter*/}
                     <DropdownMenu>

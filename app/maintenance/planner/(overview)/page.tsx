@@ -1,11 +1,10 @@
 import Kanban from '../components/kanban';
 import path from 'path';
 import { promises } from 'fs';
-import DatePicker from '../components/datePicker';
 
 export async function getData() {
     // Fetch data from the database
-    const fileName = path.join(process.cwd(), 'app/lib', 'data.json');
+    const fileName = path.join(process.cwd(), '/lib', 'data.json');
     const data = await promises.readFile(fileName, 'utf8');
     return JSON.parse(data);
 }

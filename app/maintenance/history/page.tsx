@@ -1,10 +1,10 @@
-import { task } from '@/app/lib/types';
+import { task } from '@/lib/types';
 import { columns } from './columns';
+import { DataTable } from '@/app/ui/maintenance/tasks-data-table';
 import { promises as fs } from 'fs';
-import { DataTable } from '@/app/ui/tasks/tasks-data-table';
 
-async function getTasks(): Promise<task[]> {
-    const file = await fs.readFile(process.cwd() + '/app/lib/data.json', 'utf8');
+export async function getTasks(): Promise<task[]> {
+    const file = await fs.readFile(process.cwd() + '/lib/data.json', 'utf8');
     const data = JSON.parse(file);
 
     return data.task;

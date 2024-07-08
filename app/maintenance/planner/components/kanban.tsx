@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { DragDropContext, Draggable, DropResult, Droppable } from '@hello-pangea/dnd';
-import { task } from '@/app/lib/types';
+import { task } from '@/lib/types';
 import { ArrowRightIcon, AdjustmentsHorizontalIcon, MagnifyingGlassIcon } from '@heroicons/react/16/solid';
 import KanbanTask from './kanbanTask';
 import KanbanBoard from './kambanBoard';

@@ -1,4 +1,4 @@
-import { machine } from '@/app/lib/types';
+import { machine } from '@/lib/types';
 import Breadcrumbs from '@/app/ui/components/breadcrumb';
 import { PlusIcon } from '@heroicons/react/16/solid';
 import { promises as fs } from 'fs';

@@ -1,13 +1,11 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-
 import Link from 'next/link';
 import { Button } from '@/app/ui/components/table/button';
-import { task } from '@/app/lib/types';
-import { ArrowUpIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
+import { task } from '@/lib/types';
+import { ChevronUpDownIcon } from '@heroicons/react/24/outline';
 
 export const columns: ColumnDef<task>[] = [
     {

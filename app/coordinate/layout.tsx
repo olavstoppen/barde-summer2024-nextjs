@@ -1,6 +1,4 @@
 import SideNav from '../ui/components/sidenav';
-import Navbar from '../ui/dashboard/navbar';
-
 export const experimental_ppr = true;
 
 export default function Layout({ children }: { children: React.ReactNode }) {

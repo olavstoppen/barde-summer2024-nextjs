@@ -1,6 +1,6 @@
 import { DragDropContext, DropResult, Droppable } from '@hello-pangea/dnd';
 import KanbanTask from './kanbanTask';
-import { task } from '@/app/lib/types';
+import { task } from '@/lib/types';
 import { Key } from 'react';
 import { useState } from 'react';
 import DatePicker from './datePicker';

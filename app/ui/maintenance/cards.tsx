@@ -1,17 +1,9 @@
 import { task } from '@/lib/types';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { AdjustmentsHorizontalIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 import { promises as fs } from 'fs';
 import Link from 'next/link';
-
-export default async function CardWrapper() {
-    return (
-        <>
-            <Tasks title="Dine oppgaver" value={1} />
-            <Week title="Din uke" />
-        </>
-    );
-}
+import { Button } from '../components/table/button';
 
 export async function Tasks({ title, value }: { title: string; value: number | string }) {
     const file = await fs.readFile(process.cwd() + '/lib/data.json', 'utf8');
@@ -57,14 +49,20 @@ export async function Tasks({ title, value }: { title: string; value: number | s
 
 export function Week({ title }: { title: string }) {
     return (
-        <div className="rounded-xl bg-surf-cont-low p-4 h-[850px] shadow-sm h-96 w-full">
-            <div className="relative flex p-2 ">
-                <h3 className=" text-lg font-medium">{title}</h3>
-                <div className="absolute top-1 right-6">
-                    <Linkbox path="tasks/planner" />
-                </div>
+        <div className="rounded-xl p-4 h-[850px] shadow-sm h-96 w-max-lg">
+            <div className={`flex flex-col rounded-xl mt-2 px-4 py-3 h-72 h-[750px]`}>
+                <Button variant="outline" className=" pr-4 mr-3 mb-2 h-[50px] bg-surf-cont">
+                    <Link key={'/tasks/planner'} href={'/maintenance/planner'} className="w-full">
+                        Oppgaver
+                    </Link>
+                </Button>
+
+                <Button variant="outline" className="pr-4 mr-3 h-[50px] bg-surf-cont">
+                    <Link key={'/tasks/history'} href={'/maintenance/history'} className="w-full">
+                        Historie
+                    </Link>
+                </Button>
             </div>
-            <p className={`rounded-xl bg-surf-cont-high py-2 mt-2 px-4 py-3 h-72 h-[750px]`}>Kalender</p>
         </div>
     );
 }

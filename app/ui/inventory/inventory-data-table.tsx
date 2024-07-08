@@ -16,7 +16,6 @@ import {
 } from '@tanstack/react-table';
 
 import { AdjustmentsHorizontalIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-import { DateRange } from 'react-day-picker';
 import React from 'react';
 import { addDays } from 'date-fns';
 import {
@@ -24,12 +23,12 @@ import {
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from './table/dropdown-menu';
-import { Input } from './table/input';
-import { Button } from './table/button';
-import { DatePickerWithRange } from './table/date-picker';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './table/table';
-import { DataTablePagination } from './table/table-pagination';
+} from '../components/table/dropdown-menu';
+import { Input } from '../components/table/input';
+import { Button } from '../components/table/button';
+import { DatePickerWithRange } from '../components/table/date-picker';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/table/table';
+import { DataTablePagination } from '../components/table/table-pagination';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -40,10 +39,6 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
     const [rowSelection, setRowSelection] = useState({});
-    const [date, setDate] = React.useState<DateRange | undefined>({
-        from: new Date(2022, 0, 20),
-        to: addDays(new Date(2022, 0, 20), 20),
-    });
 
     const table = useReactTable({
         data,
@@ -63,7 +58,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
     });
 
     const machines = ['Traktor', 'Gravemaskin', 'Lastebil'];
-    const types = ['Lekkasje', 'Motor', 'Service', 'Styring'];
+    const status = ['Maintenance', 'In warehouse', 'Done'];
 
     return (
         <>
@@ -78,16 +73,16 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                         className="max-w-sm mr-3"
                     />
 
-                    {/* Types filter*/}
+                    {/* Machine filter*/}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="ml-auto pr-4 mr-3">
                                 <AdjustmentsHorizontalIcon className="w-5 h-5 pr-1" />
-                                Type
+                                Maskin
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="start">
-                            {types.map((item: string) => {
+                            {machines.map((item: string) => {
                                 return (
                                     <DropdownMenuCheckboxItem
                                         key={item}
@@ -106,25 +101,25 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                         </DropdownMenuContent>
                     </DropdownMenu>
 
-                    {/* Machine filter*/}
+                    {/* Status filter*/}
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="ml-auto">
                                 <AdjustmentsHorizontalIcon className="w-5 h-5 pr-1" />
-                                Maskin
+                                Status
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="start">
-                            {machines.map((item: string) => {
+                            {status.map((item: string) => {
                                 return (
                                     <DropdownMenuCheckboxItem
                                         key={item}
                                         className="capitalize"
-                                        checked={table.getColumn('machine')?.getFilterValue() === item}
+                                        checked={table.getColumn('status')?.getFilterValue() === item}
                                         onCheckedChange={() =>
-                                            table.getColumn('machine')?.getFilterValue() === item
-                                                ? table.getColumn('machine')?.setFilterValue('')
-                                                : table.getColumn('machine')?.setFilterValue(item)
+                                            table.getColumn('status')?.getFilterValue() === item
+                                                ? table.getColumn('status')?.setFilterValue('')
+                                                : table.getColumn('status')?.setFilterValue(item)
                                         }
                                     >
                                         {item}
@@ -134,8 +129,6 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <DatePickerWithRange dates={date} setDate={setDate} />
-                {/*<p>{date?.from?.toLocaleDateString()}</p>*/}
             </div>
 
             {/* Table */}

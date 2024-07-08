@@ -1,7 +1,7 @@
 import { task } from '@/app/lib/types';
 import { columns } from './columns';
 import { promises as fs } from 'fs';
-import { DataTable } from '@/app/ui/tasks/data-table';
+import { DataTable } from '@/app/ui/tasks/tasks-data-table';
 
 async function getTasks(): Promise<task[]> {
     const file = await fs.readFile(process.cwd() + '/app/lib/data.json', 'utf8');

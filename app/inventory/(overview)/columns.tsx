@@ -34,14 +34,14 @@ export const columns: ColumnDef<task>[] = [
                     className="text-black"
                     onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
                 >
-                    Oppgave
+                    Navn
                     <ChevronUpDownIcon className="ml-2 h-4 w-4" />
                 </Button>
             );
         },
     },
     {
-        accessorKey: 'start_date',
+        accessorKey: 'type',
         header: ({ column }) => {
             return (
                 <Button
@@ -49,22 +49,16 @@ export const columns: ColumnDef<task>[] = [
                     className="text-black"
                     onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
                 >
-                    Start date
+                    Type
                     <ChevronUpDownIcon className="ml-2 h-4 w-4" />
                 </Button>
             );
         },
     },
     {
-        accessorKey: 'machine',
+        accessorKey: 'status',
         header: () => {
-            return <div className="flex text-black">Maskin</div>;
-        },
-    },
-    {
-        accessorKey: 'type',
-        header: () => {
-            return <div className="flex text-black">Type</div>;
+            return <div className="flex text-black">Status</div>;
         },
     },
     {

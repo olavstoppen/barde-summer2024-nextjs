@@ -1,33 +1,24 @@
-import Pagination from '@/app/ui/components/pagination';
-import Table from '@/app/ui/inventory/table';
-import { Suspense } from 'react';
+import { task } from '@/app/lib/types';
+import { columns } from './columns';
+import { promises as fs } from 'fs';
+import { DataTable } from '@/app/ui/inventory/inventory-data-table';
 
-export default async function Page({
-    searchParams,
-}: {
-    searchParams?: {
-        query?: string;
-        page?: string;
-    };
-}) {
-    const query = searchParams?.query || '';
-    const currentPage = Number(searchParams?.page) || 1;
-    const totalPages = 3;
+async function getTasks(): Promise<task[]> {
+    const file = await fs.readFile(process.cwd() + '/app/lib/data.json', 'utf8');
+    const data = JSON.parse(file);
+
+    return data.machine;
+}
+
+export default async function Page() {
+    const data = await getTasks();
 
     return (
-        <main>
-            <div className="max-w-7xl">
-                <div className="flex w-full items-center justify-between">
-                    <h1 className={`text-2xl`}>Inventory</h1>
-                </div>
-                <div className="mt-4 flex items-center justify-between gap-2 md:mt-8"></div>
-                <Suspense key={query + currentPage}>
-                    <Table query={query} currentPage={currentPage} />
-                </Suspense>
-                <div className="mt-5 flex max-w-7xl justify-center">
-                    <Pagination totalPages={totalPages} />
-                </div>
+        <section>
+            <div className="max-w-7xl pt-4">
+                <h1 className="text-3xl max-w-xl pb-6">Oversikt maskiner</h1>
+                <DataTable columns={columns} data={data} />
             </div>
-        </main>
+        </section>
     );
 }

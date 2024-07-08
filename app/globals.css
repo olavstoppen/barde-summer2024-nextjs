@@ -1,109 +1,76 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind components;
+  @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
 
-h1 {
-    color: #000;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
 
-    font-family: 'Space Mono', monospace;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 44px; /* 122.222% */
-}
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
 
-h2 {
-    color: #000;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
 
-    /* M3/H2 */
-    font-family: 'Space Mono', monospace;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 36px; /* 128.571% */
-}
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
 
-h3 {
-    color: #000;
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* M3/Title */
-    font-family: 'Space Mono', monospace;
-    font-size: var(--Title-Large-Size, 18px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Title-Large-Line-Height, 24px); /* 133.333% */
-    letter-spacing: var(--Title-Large-Tracking, 0px);
-}
+      --accent: 210 40% 96.1%;
+      --accent-foreground: 222.2 47.4% 11.2%;
 
-p {
-    color: #000;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
 
-    /* M3/Body */
-    font-family: 'Space Mono', monospace;
-    font-size: var(--Label-Large-Size, 14px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
-    letter-spacing: var(--Label-Large-Tracking, 0.1px);
-}
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
 
-div {
-    color: #000;
+      --radius: 0.5rem;
+    }
 
-    /* M3/Body */
-    font-family: 'Space Mono', monospace;
-    font-size: var(--Label-Large-Size, 14px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: var(--Label-Large-Line-Height, 20px); /* 142.857% */
-    letter-spacing: var(--Label-Large-Tracking, 0.1px);
-}
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
 
-body {
-    background-color: #fcf8f8;
-}
+      --card: 222.2 84% 4.9%;
+      --card-foreground: 210 40% 98%;
 
-input[type='number'] {
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
+      --popover: 222.2 84% 4.9%;
+      --popover-foreground: 210 40% 98%;
 
-input[type='number']::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+      --primary: 210 40% 98%;
+      --primary-foreground: 222.2 47.4% 11.2%;
 
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+      --secondary: 217.2 32.6% 17.5%;
+      --secondary-foreground: 210 40% 98%;
 
-.scale-on-hover {
-    transition: transform 0.1s;
-}
+      --muted: 217.2 32.6% 17.5%;
+      --muted-foreground: 215 20.2% 65.1%;
 
-.scale-on-hover:hover {
-    transform: scale(1.05);
-}
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
+      --accent: 217.2 32.6% 17.5%;
+      --accent-foreground: 210 40% 98%;
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: #ebe7e7;
-}
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 210 40% 98%;
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
+      --border: 217.2 32.6% 17.5%;
+      --input: 217.2 32.6% 17.5%;
+      --ring: 212.7 26.8% 83.9%;
+    }
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }

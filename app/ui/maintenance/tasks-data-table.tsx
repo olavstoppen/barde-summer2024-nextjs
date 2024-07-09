@@ -15,7 +15,7 @@ import {
     Column,
 } from '@tanstack/react-table';
 
-import { AdjustmentsHorizontalIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { DateRange } from 'react-day-picker';
 import React from 'react';
 import { addDays } from 'date-fns';
@@ -24,12 +24,12 @@ import {
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
     DropdownMenuTrigger,
-} from '../components/table/dropdown-menu';
-import { Input } from '../components/table/input';
-import { Button } from '../components/table/button';
-import { DatePickerWithRange } from '../components/table/date-picker';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../components/table/table';
-import { DataTablePagination } from '../components/table/table-pagination';
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { DatePickerWithRange } from '@/components/ui/date-picker';
+import { DataTablePagination } from '@/components/ui/table-pagination';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];

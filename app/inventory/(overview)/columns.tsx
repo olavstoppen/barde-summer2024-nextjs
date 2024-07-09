@@ -3,7 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
-import { Button } from '@/app/ui/components/table/button';
+import { Button } from '@/components/ui/button';
 import { task } from '@/lib/types';
 import { ChevronUpDownIcon } from '@heroicons/react/24/outline';
 

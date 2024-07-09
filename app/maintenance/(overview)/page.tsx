@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Tasks, Week } from '@/app/ui/maintenance/cards';
+import { Tasks, Buttons } from '@/app/ui/maintenance/cards';
 
 export default async function Page() {
     return (
@@ -13,7 +13,7 @@ export default async function Page() {
                 </div>
                 <div className="col-start-4">
                     <Suspense>
-                        <Week title="Navigasjon" />
+                        <Buttons title="Navigasjon" />
                     </Suspense>
                 </div>
             </div>

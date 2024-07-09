@@ -16,7 +16,7 @@ export default async function Page() {
     return (
         <section>
             <div className="max-w-7xl pt-4">
-                <h1 className="text-3xl max-w-xl pb-6">Oversikt maskiner</h1>
+                <h1 className="text-3xl max-w-xl pb-6">Maskiner</h1>
                 <DataTable columns={columns} data={data} />
             </div>
         </section>

@@ -16,10 +16,3 @@ export function SideNav() {
         </div>
     );
 }
-
-/*                <form>
-                    <button className=" flex w-full flex-col grow items-center gap-2 rounded-md p-3 text-md text-black font-medium md:flex-none md:justify-start md:p-2 md:px-3">
-                        <ArrowRightStartOnRectangleIcon className="w-8 h-8 pb-1" />
-                        <div className="hidden md:block">Logg ut</div>
-                    </button>
-                </form>*/

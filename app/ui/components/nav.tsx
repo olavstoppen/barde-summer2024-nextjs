@@ -87,32 +87,3 @@ export function Nav() {
         </div>
     );
 }
-
-/*
-export default function NavLinks() {
-    const pathname = usePathname();
-    return (
-        <>
-            <h2 className="mb-2 px-4 text-md font-semibold tracking-tight">Navigasjon</h2>
-
-            {links.map(link => {
-                const LinkIcon = link.icon;
-                return (
-                    <Link
-                        key={link.name}
-                        href={link.href}
-                        className="flex grow items-center justify-center gap-2 text-sm font-medium md:flex-none md:justify-start  md:p-2 md:px-3"
-                    >
-                        <LinkIcon
-                            className={clsx('rounded-2xl w-7 h-7 p-1', {
-                                'bg-sec-cont text-white w-8 h-8 rounded-2xl p-2': pathname.includes(link.href),
-                            })}
-                        />
-
-                        <p className="hidden md:block">{link.name}</p>
-                    </Link>
-                );
-            })}
-        </>
-    );
-}*/

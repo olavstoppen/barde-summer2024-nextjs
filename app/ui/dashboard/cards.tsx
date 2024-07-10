@@ -120,7 +120,7 @@ export function KanbanTask({ item }: { item: task }) {
                         {item.type}
                     </div>
 
-                    <Linkbox path={'tasks/' + item.id} />
+                    <Linkbox path={'maintenance/' + item.id} />
                 </div>
             </div>
         </div>
